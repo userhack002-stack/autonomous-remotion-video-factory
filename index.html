@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Autonomous AI Video Factory v3.0 — Cloud Control</title>
+  <title>Autonomous AI Video Factory v3.1 — Cloud Control</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { background-color: #0d0e12; color: #f3f4f6; font-family: Inter, system-ui, sans-serif; }
     .card { background-color: #161820; border: 1px solid #262936; border-radius: 14px; }
-    .accent-btn { background-color: #ff3b4e; color: #fff; font-weight: 700; transition: all 0.15s; }
+    .accent-btn { background-color: #ff3b4e; color: #fff; font-weight: 700; transition: all 0.15s; cursor: pointer; }
     .accent-btn:hover { background-color: #e12d3f; }
     input, textarea, select { background-color: #0d0e12 !important; border: 1px solid #2e3244 !important; color: #fff !important; border-radius: 8px; padding: 8px 12px; }
   </style>
@@ -16,26 +16,28 @@
 <body class="min-h-screen p-6">
   <div class="max-w-7xl mx-auto space-y-6">
 
+    <!-- Top Header -->
     <div class="card p-5 flex flex-wrap justify-between items-center gap-4">
       <div>
         <div class="flex items-center gap-3">
           <h1 class="text-2xl font-black tracking-tight"><span class="text-[#ff3b4e]">&gt;</span> Autonomous Remotion + 'Charon' Factory</h1>
-          <span class="px-2.5 py-1 rounded-full bg-emerald-900/60 border border-emerald-500 text-emerald-300 text-xs font-bold">v3.0 • Verified Cloud Actions</span>
+          <span class="px-2.5 py-1 rounded-full bg-emerald-900/60 border border-emerald-500 text-emerald-300 text-xs font-bold">v3.1 • UI & Cloud Active</span>
         </div>
         <p class="text-sm text-gray-400 mt-1">100% Serverless GitHub Cloud Pipeline • Live Actions Monitor & Direct MP4 Releases</p>
       </div>
       <div class="flex gap-3">
-        <button onclick="syncFromGitHub()" class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-sm font-semibold">🔄 Refresh Status & Releases</button>
-        <button onclick="saveDatabaseToGitHub('Manual save from dashboard')" class="px-4 py-2 rounded-lg accent-btn text-sm">💾 Save Changes to GitHub</button>
+        <button type="button" onclick="syncFromGitHub()" class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-sm font-semibold">🔄 Refresh Status & Releases</button>
+        <button type="button" onclick="saveDatabaseToGitHub('Manual save from dashboard')" class="px-4 py-2 rounded-lg accent-btn text-sm">💾 Save Changes to GitHub</button>
       </div>
     </div>
 
+    <!-- Settings & Brand Config -->
     <details class="card p-5" open>
       <summary class="cursor-pointer font-bold text-lg text-[#ff3b4e]">⚙️ 1. Cloud Keys & Dynamic Company Branding</summary>
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">
         <div>
           <label class="text-xs text-gray-400">GitHub Owner/Repo (e.g. user/repo)</label>
-          <input id="cfg_repo" class="w-full mt-1" placeholder="username/autonomous-remotion-video-factory" />
+          <input id="cfg_repo" class="w-full mt-1" placeholder="userhack002-stack/autonomous-remotion-video-factory" />
         </div>
         <div>
           <label class="text-xs text-gray-400">GitHub Personal Access Token (PAT)</label>
@@ -67,25 +69,28 @@
         </div>
       </div>
       <div class="mt-4 flex justify-end">
-        <button onclick="saveLocalKeysAndBrand()" class="px-5 py-2 rounded-lg accent-btn text-sm">✅ Apply & Sync Brand Settings</button>
+        <button type="button" onclick="saveLocalKeysAndBrand()" class="px-5 py-2 rounded-lg accent-btn text-sm">✅ Apply & Sync Brand Settings</button>
       </div>
     </details>
 
+    <!-- Navigation Tabs -->
     <div class="flex flex-wrap gap-2 border-b border-gray-800 pb-3">
-      <button onclick="showTab('tab_cats')" class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 font-bold text-sm">1️⃣ Categories (Manual + AI Drafts)</button>
-      <button onclick="showTab('tab_subs')" class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 font-bold text-sm">2️⃣ Sub-Categories & Multi-Prompt Architect</button>
-      <button onclick="showTab('tab_prompts')" class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 font-bold text-sm">3️⃣ Review Prompts & Send to Production</button>
-      <button onclick="showTab('tab_releases')" class="px-4 py-2 rounded-lg bg-[#ff3b4e] text-white font-bold text-sm">4️⃣ Live Render Jobs & Completed Videos</button>
+      <button type="button" id="btn_tab_cats" onclick="showTab('tab_cats')" class="px-4 py-2 rounded-lg bg-[#ff3b4e] text-white font-bold text-sm">1️⃣ Categories (Manual + AI Drafts)</button>
+      <button type="button" id="btn_tab_subs" onclick="showTab('tab_subs')" class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 font-bold text-sm">2️⃣ Sub-Categories & Multi-Prompt Architect</button>
+      <button type="button" id="btn_tab_prompts" onclick="showTab('tab_prompts')" class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 font-bold text-sm">3️⃣ Review Prompts & Send to Production</button>
+      <button type="button" id="btn_tab_releases" onclick="showTab('tab_releases')" class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 font-bold text-sm">4️⃣ Live Render Jobs & Completed Videos</button>
     </div>
 
+    <!-- Status Banner -->
     <div id="status_banner" class="hidden p-4 rounded-xl bg-blue-950 border border-blue-600 text-blue-200 text-sm font-semibold whitespace-pre-wrap"></div>
 
+    <!-- TAB 1: CATEGORIES -->
     <div id="tab_cats" class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div class="card p-5 space-y-4">
         <h2 class="text-lg font-bold">➕ Add Manual Category</h2>
         <input id="new_cat_name" class="w-full" placeholder="Category Name (e.g., Website Security, SEO, App Dev)" />
         <textarea id="new_cat_desc" class="w-full" rows="2" placeholder="What problems/services fall under this category?"></textarea>
-        <button onclick="addManualCategory()" class="px-4 py-2 rounded-lg accent-btn text-sm">Add Category</button>
+        <button type="button" onclick="addManualCategory()" class="px-4 py-2 rounded-lg accent-btn text-sm">Add Category</button>
 
         <h3 class="text-md font-bold pt-4 border-t border-gray-800">✅ Approved Categories (Edit / Delete)</h3>
         <div id="approved_cats_list" class="space-y-3"></div>
@@ -94,13 +99,14 @@
       <div class="card p-5 space-y-4">
         <div class="flex justify-between items-center">
           <h2 class="text-lg font-bold">🤖 AI Category Thinker (Auto-Drafts)</h2>
-          <button onclick="aiDraftNewCategories()" class="px-4 py-2 rounded-lg bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm">✨ AI Think 5 Categories</button>
+          <button type="button" onclick="aiDraftNewCategories()" class="px-4 py-2 rounded-lg bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm">✨ AI Think 5 Categories</button>
         </div>
         <p class="text-xs text-gray-400">Powered by <b>gemini-3.5-flash-lite</b> & <b>gemini-3.8-flash</b>. Approve or Delete below:</p>
         <div id="draft_cats_list" class="space-y-3"></div>
       </div>
     </div>
 
+    <!-- TAB 2: SUB-CATEGORIES & PROMPT GENERATOR -->
     <div id="tab_subs" class="hidden card p-6 space-y-5">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
         <div>
@@ -108,7 +114,7 @@
           <select id="sel_main_cat" onchange="renderSubcategoryDropdown()" class="w-full mt-1"></select>
         </div>
         <div>
-          <button onclick="aiGenerateSubcategories()" class="w-full py-2 px-4 rounded-lg bg-indigo-600 hover:bg-indigo-500 font-bold text-sm text-white">🧠 AI Generate Realistic Indian Sub-Categories</button>
+          <button type="button" onclick="aiGenerateSubcategories()" class="w-full py-2 px-4 rounded-lg bg-indigo-600 hover:bg-indigo-500 font-bold text-sm text-white">🧠 AI Generate Realistic Indian Sub-Categories</button>
         </div>
         <div>
           <label class="text-xs text-gray-400">Choose Sub-Category (or Main Category Only)</label>
@@ -144,19 +150,20 @@
         </div>
       </div>
 
-      <button onclick="aiGenerateVideoPrompts()" class="w-full py-3 rounded-xl accent-btn text-base">🚀 Generate Complete Video Prompts (Hindi 'Charon' Script + 12-Scene Remotion Visual Blueprint)</button>
+      <button type="button" onclick="aiGenerateVideoPrompts()" class="w-full py-3 rounded-xl accent-btn text-base">🚀 Generate Complete Video Prompts (Hindi 'Charon' Script + 12-Scene Remotion Visual Blueprint)</button>
     </div>
 
+    <!-- TAB 3: REVIEW PROMPTS & SEND TO PRODUCTION -->
     <div id="tab_prompts" class="hidden space-y-4">
       <div class="card p-4 flex flex-wrap justify-between items-center gap-4">
         <div class="text-sm text-gray-300">Check the box next to any prompt(s) below, select a Template, and click <b>Send Checked Prompts to Cloud Render</b>.</div>
-        <button onclick="triggerSelectedRenders()" class="px-5 py-2.5 rounded-xl accent-btn text-sm">🎬 Send Checked Prompts to Cloud Render (GitHub Actions)</button>
+        <button type="button" onclick="triggerSelectedRenders()" class="px-5 py-2.5 rounded-xl accent-btn text-sm">🎬 Send Checked Prompts to Cloud Render (GitHub Actions)</button>
       </div>
       <div id="prompts_list" class="space-y-4"></div>
     </div>
 
+    <!-- TAB 4: LIVE JOBS & COMPLETED RELEASES -->
     <div id="tab_releases" class="hidden space-y-6">
-      <!-- Live GitHub Actions Job Monitor -->
       <div class="card p-5 space-y-3">
         <div class="flex justify-between items-center">
           <div>
@@ -164,14 +171,13 @@
             <p class="text-xs text-gray-400">Real-time status of your cloud rendering jobs (takes ~2-3 minutes per video).</p>
           </div>
           <div class="flex gap-2">
-            <button onclick="syncFromGitHub()" class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-xs font-bold">🔄 Refresh Job Status</button>
+            <button type="button" onclick="syncFromGitHub()" class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-xs font-bold">🔄 Refresh Job Status</button>
             <a id="repo_actions_link" href="#" target="_blank" class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-xs font-bold">🔗 Open GitHub Actions ↗</a>
           </div>
         </div>
         <div id="actions_runs_list" class="space-y-2"></div>
       </div>
 
-      <!-- Completed Videos from Releases -->
       <div class="card p-5 flex justify-between items-center">
         <div>
           <h2 class="text-xl font-bold text-emerald-400">🎥 Completed Videos (Direct from GitHub Releases)</h2>
@@ -187,25 +193,40 @@
 <script>
 let DB = { brand: {}, categories: [], subcategories: [], prompts: [], rendered_videos: [] };
 let DB_SHA = null;
+const NL = String.fromCharCode(10);
 
-function setStatus(msg, isError = false) {
+function setStatus(msg, isError) {
   const el = document.getElementById('status_banner');
-  el.className = `p-4 rounded-xl text-sm font-semibold whitespace-pre-wrap ${isError ? 'bg-red-950 border border-red-600 text-red-200' : 'bg-blue-950 border border-blue-600 text-blue-200'}`;
+  el.className = 'p-4 rounded-xl text-sm font-semibold whitespace-pre-wrap ' + (isError ? 'bg-red-950 border border-red-600 text-red-200' : 'bg-blue-950 border border-blue-600 text-blue-200');
   el.innerText = msg;
   el.classList.remove('hidden');
 }
 
 function showTab(tabId) {
-  ['tab_cats', 'tab_subs', 'tab_prompts', 'tab_releases'].forEach(id => {
+  const tabs = ['tab_cats', 'tab_subs', 'tab_prompts', 'tab_releases'];
+  tabs.forEach(function(id) {
     document.getElementById(id).classList.add('hidden');
+    const btn = document.getElementById('btn_' + id);
+    if (btn) {
+      btn.className = 'px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 font-bold text-sm text-gray-200';
+    }
   });
   document.getElementById(tabId).classList.remove('hidden');
+  const activeBtn = document.getElementById('btn_' + tabId);
+  if (activeBtn) {
+    activeBtn.className = 'px-4 py-2 rounded-lg bg-[#ff3b4e] text-white font-bold text-sm';
+  }
 }
 
 function loadLocalConfig() {
-  const defaultRepo = window.location.hostname.endsWith('github.io')
-    ? `${window.location.hostname.split('.')[0]}/${window.location.pathname.split('/').filter(Boolean)[0] || ''}`
-    : '';
+  let defaultRepo = 'userhack002-stack/autonomous-remotion-video-factory';
+  if (window.location.hostname.endsWith('github.io')) {
+    const owner = window.location.hostname.split('.')[0];
+    const parts = window.location.pathname.split('/').filter(Boolean);
+    if (parts.length > 0) {
+      defaultRepo = owner + '/' + parts[0];
+    }
+  }
   document.getElementById('cfg_repo').value = localStorage.getItem('vf_repo') || defaultRepo;
   document.getElementById('cfg_gh_token').value = localStorage.getItem('vf_gh_token') || '';
   document.getElementById('cfg_gemini_key').value = localStorage.getItem('vf_gemini_key') || '';
@@ -223,41 +244,55 @@ async function saveLocalKeysAndBrand() {
     contact_info: document.getElementById('brand_contact').value.trim() || '+91 98765 43210',
     default_comment_word: document.getElementById('brand_kw').value.trim() || 'RULES'
   };
-  await saveDatabaseToGitHub('Update dynamic brand configuration');
+  const ok = await saveDatabaseToGitHub('Update dynamic brand configuration');
+  if (ok) {
+    setStatus('✅ Keys saved in browser & Brand settings synced to GitHub!');
+  }
 }
 
 async function syncFromGitHub() {
   const repo = document.getElementById('cfg_repo').value.trim();
   const token = document.getElementById('cfg_gh_token').value.trim();
-  if (!repo) return setStatus('Please enter your GitHub Repo (username/repo) in Settings above.', true);
+  if (!repo) {
+    setStatus('Please enter your GitHub Repo (username/repo) in Settings above.', true);
+    return;
+  }
 
   setStatus('Syncing database.json, Live Actions Runs & GitHub Releases...');
-  const headers = token ? { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github+json' } : { 'Accept': 'application/vnd.github+json' };
+  const headers = token
+    ? { 'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github+json' }
+    : { 'Accept': 'application/vnd.github+json' };
 
   try {
-    const res = await fetch(`https://api.github.com/repos/${repo}/contents/data/database.json?t=${Date.now()}`, { headers });
-    if (!res.ok) throw new Error('Could not fetch data/database.json');
+    const res = await fetch('https://api.github.com/repos/' + repo + '/contents/data/database.json?t=' + Date.now(), { headers: headers });
+    if (!res.ok) throw new Error('Could not fetch data/database.json (HTTP ' + res.status + ')');
     const data = await res.json();
     DB_SHA = data.sha;
-    const rawB64 = data.content.split('\n').join('');
-    const decoded = new TextDecoder().decode(Uint8Array.from(atob(rawB64), c => c.charCodeAt(0)));
+
+    const cleanB64 = (data.content || '').split(NL).join('').split('\r').join('').trim();
+    const binaryStr = atob(cleanB64);
+    const bytes = new Uint8Array(binaryStr.length);
+    for (let i = 0; i < binaryStr.length; i++) {
+      bytes[i] = binaryStr.charCodeAt(i);
+    }
+    const decoded = new TextDecoder().decode(bytes);
     DB = JSON.parse(decoded);
 
-    const [relRes, runsRes] = await Promise.all([
-      fetch(`https://api.github.com/repos/${repo}/releases?per_page=20&t=${Date.now()}`, { headers }),
-      fetch(`https://api.github.com/repos/${repo}/actions/runs?per_page=10&t=${Date.now()}`, { headers })
-    ]);
+    const relRes = await fetch('https://api.github.com/repos/' + repo + '/releases?per_page=20&t=' + Date.now(), { headers: headers });
+    if (relRes.ok) {
+      window.LIVE_RELEASES = await relRes.json();
+    }
 
-    if (relRes.ok) window.LIVE_RELEASES = await relRes.json();
+    const runsRes = await fetch('https://api.github.com/repos/' + repo + '/actions/runs?per_page=10&t=' + Date.now(), { headers: headers });
     if (runsRes.ok) {
       const runsData = await runsRes.json();
       window.LIVE_ACTION_RUNS = runsData.workflow_runs || [];
     }
 
-    document.getElementById('repo_releases_link').href = `https://github.com/${repo}/releases`;
-    document.getElementById('repo_actions_link').href = `https://github.com/${repo}/actions`;
+    document.getElementById('repo_releases_link').href = 'https://github.com/' + repo + '/releases';
+    document.getElementById('repo_actions_link').href = 'https://github.com/' + repo + '/actions';
     populateUI();
-    setStatus('✅ Synced database, Live Action Jobs & Releases from GitHub!');
+    setStatus('✅ Synced database (' + (DB.prompts || []).length + ' prompts), Live Action Jobs & Releases from GitHub!');
   } catch (e) {
     setStatus('Error syncing from GitHub: ' + e.message, true);
   }
@@ -266,16 +301,18 @@ async function syncFromGitHub() {
 async function saveDatabaseToGitHub(commitMsg) {
   const repo = document.getElementById('cfg_repo').value.trim();
   const token = document.getElementById('cfg_gh_token').value.trim();
-  if (!repo || !token) return setStatus('GitHub Repo & PAT Token required to save changes!', true);
+  if (!repo || !token) {
+    setStatus('GitHub Repo & PAT Token required in Settings to save changes!', true);
+    return false;
+  }
 
   const headers = {
-    'Authorization': `Bearer ${token}`,
+    'Authorization': 'Bearer ' + token,
     'Accept': 'application/vnd.github+json',
     'Content-Type': 'application/json'
   };
 
-  // Always fetch latest SHA first so we never get a 409 conflict
-  const latestRes = await fetch(`https://api.github.com/repos/${repo}/contents/data/database.json?t=${Date.now()}`, { headers });
+  const latestRes = await fetch('https://api.github.com/repos/' + repo + '/contents/data/database.json?t=' + Date.now(), { headers: headers });
   if (latestRes.ok) {
     const latestData = await latestRes.json();
     DB_SHA = latestData.sha;
@@ -283,12 +320,14 @@ async function saveDatabaseToGitHub(commitMsg) {
 
   const bytes = new TextEncoder().encode(JSON.stringify(DB, null, 2));
   let bin = '';
-  bytes.forEach(b => bin += String.fromCharCode(b));
+  for (let i = 0; i < bytes.length; i++) {
+    bin += String.fromCharCode(bytes[i]);
+  }
   const b64 = btoa(bin);
 
-  const res = await fetch(`https://api.github.com/repos/${repo}/contents/data/database.json`, {
+  const res = await fetch('https://api.github.com/repos/' + repo + '/contents/data/database.json', {
     method: 'PUT',
-    headers,
+    headers: headers,
     body: JSON.stringify({ message: commitMsg, content: b64, sha: DB_SHA })
   });
   if (res.ok) {
@@ -320,28 +359,28 @@ function populateUI() {
   const selMain = document.getElementById('sel_main_cat');
   selMain.innerHTML = '';
 
-  (DB.categories || []).forEach((c, idx) => {
+  (DB.categories || []).forEach(function(c, idx) {
     if (c.status === 'approved') {
-      selMain.innerHTML += `<option value="${c.id}">${c.name}</option>`;
-      appEl.innerHTML += `
-        <div class="p-3 rounded-lg bg-[#0d0e12] border border-gray-800 space-y-2">
-          <input id="edit_cn_${idx}" value="${c.name}" class="w-full font-bold text-sm" />
-          <input id="edit_cd_${idx}" value="${c.description || ''}" class="w-full text-xs text-gray-400" />
-          <div class="flex gap-2">
-            <button onclick="updateCategory(${idx})" class="px-3 py-1 rounded bg-gray-800 hover:bg-gray-700 text-xs">💾 Update</button>
-            <button onclick="deleteCategory(${idx})" class="px-3 py-1 rounded bg-red-950 text-red-300 text-xs">🗑️ Delete</button>
-          </div>
-        </div>`;
+      selMain.innerHTML += '<option value="' + c.id + '">' + c.name + '</option>';
+      appEl.innerHTML +=
+        '<div class="p-3 rounded-lg bg-[#0d0e12] border border-gray-800 space-y-2">' +
+          '<input id="edit_cn_' + idx + '" value="' + (c.name || '').replace(/"/g, '&quot;') + '" class="w-full font-bold text-sm" />' +
+          '<input id="edit_cd_' + idx + '" value="' + (c.description || '').replace(/"/g, '&quot;') + '" class="w-full text-xs text-gray-400" />' +
+          '<div class="flex gap-2">' +
+            '<button type="button" onclick="updateCategory(' + idx + ')" class="px-3 py-1 rounded bg-gray-800 hover:bg-gray-700 text-xs">💾 Update</button>' +
+            '<button type="button" onclick="deleteCategory(' + idx + ')" class="px-3 py-1 rounded bg-red-950 text-red-300 text-xs">🗑️ Delete</button>' +
+          '</div>' +
+        '</div>';
     } else {
-      drfEl.innerHTML += `
-        <div class="p-3 rounded-lg bg-purple-950/30 border border-purple-700/50 space-y-2">
-          <div class="font-bold text-sm text-purple-200">${c.name}</div>
-          <div class="text-xs text-gray-300">${c.description || ''}</div>
-          <div class="flex gap-2">
-            <button onclick="approveCategory(${idx})" class="px-3 py-1 rounded bg-green-700 text-white text-xs font-bold">✅ Approve</button>
-            <button onclick="deleteCategory(${idx})" class="px-3 py-1 rounded bg-red-900 text-white text-xs">🗑️ Delete</button>
-          </div>
-        </div>`;
+      drfEl.innerHTML +=
+        '<div class="p-3 rounded-lg bg-purple-950/30 border border-purple-700/50 space-y-2">' +
+          '<div class="font-bold text-sm text-purple-200">' + c.name + '</div>' +
+          '<div class="text-xs text-gray-300">' + (c.description || '') + '</div>' +
+          '<div class="flex gap-2">' +
+            '<button type="button" onclick="approveCategory(' + idx + ')" class="px-3 py-1 rounded bg-green-700 text-white text-xs font-bold">✅ Approve</button>' +
+            '<button type="button" onclick="deleteCategory(' + idx + ')" class="px-3 py-1 rounded bg-red-900 text-white text-xs">🗑️ Delete</button>' +
+          '</div>' +
+        '</div>';
     }
   });
 
@@ -353,9 +392,9 @@ function populateUI() {
 function renderSubcategoryDropdown() {
   const catId = document.getElementById('sel_main_cat').value;
   const subSel = document.getElementById('sel_sub_cat');
-  subSel.innerHTML = `<option value="MAIN_ONLY">[Main Category Only — Broad Topic]</option>`;
-  (DB.subcategories || []).filter(s => s.category_id === catId).forEach(s => {
-    subSel.innerHTML += `<option value="${s.id}">${s.name} (${s.india_hook_stat} | ${s.risk_type})</option>`;
+  subSel.innerHTML = '<option value="MAIN_ONLY">[Main Category Only — Broad Topic]</option>';
+  (DB.subcategories || []).filter(function(s) { return s.category_id === catId; }).forEach(function(s) {
+    subSel.innerHTML += '<option value="' + s.id + '">' + s.name + ' (' + s.india_hook_stat + ' | ' + s.risk_type + ')</option>';
   });
 }
 
@@ -363,15 +402,15 @@ function addManualCategory() {
   const name = document.getElementById('new_cat_name').value.trim();
   const desc = document.getElementById('new_cat_desc').value.trim();
   if (!name) return;
-  DB.categories.push({ id: 'cat_' + Date.now(), name, description: desc, source: 'manual', status: 'approved' });
+  DB.categories.push({ id: 'cat_' + Date.now(), name: name, description: desc, source: 'manual', status: 'approved' });
   document.getElementById('new_cat_name').value = '';
   document.getElementById('new_cat_desc').value = '';
   saveDatabaseToGitHub('Add manual category: ' + name);
 }
 
 function updateCategory(idx) {
-  DB.categories[idx].name = document.getElementById(`edit_cn_${idx}`).value.trim();
-  DB.categories[idx].description = document.getElementById(`edit_cd_${idx}`).value.trim();
+  DB.categories[idx].name = document.getElementById('edit_cn_' + idx).value.trim();
+  DB.categories[idx].description = document.getElementById('edit_cd_' + idx).value.trim();
   saveDatabaseToGitHub('Update category');
 }
 
@@ -387,11 +426,15 @@ function deleteCategory(idx) {
 
 function extractCleanJSON(raw) {
   let s = (raw || '').trim();
-  s = s.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/, '').trim();
   const firstArr = s.indexOf('[');
   const lastArr = s.lastIndexOf(']');
   if (firstArr !== -1 && lastArr > firstArr) {
     try { return JSON.parse(s.slice(firstArr, lastArr + 1)); } catch (e) {}
+  }
+  const firstObj = s.indexOf('{');
+  const lastObj = s.lastIndexOf('}');
+  if (firstObj !== -1 && lastObj > firstObj) {
+    try { return JSON.parse(s.slice(firstObj, lastObj + 1)); } catch (e) {}
   }
   return JSON.parse(s);
 }
@@ -400,7 +443,6 @@ async function callGeminiJSON(promptText) {
   const key = document.getElementById('cfg_gemini_key').value.trim();
   if (!key) throw new Error('Please enter your GEMINI_API_KEY in Settings above!');
 
-  // Fastest non-hanging model first!
   const candidateModels = [
     'gemini-3.5-flash-lite',
     'gemini-3.8-flash',
@@ -409,13 +451,14 @@ async function callGeminiJSON(promptText) {
 
   const errorLog = [];
 
-  for (const model of candidateModels) {
+  for (let i = 0; i < candidateModels.length; i++) {
+    const model = candidateModels[i];
     try {
-      setStatus(`⚡ Generating with ${model}...`);
+      setStatus('⚡ Generating with ' + model + '...');
       const controller = new AbortController();
-      const timer = setTimeout(() => controller.abort(), 35000);
+      const timer = setTimeout(function() { controller.abort(); }, 35000);
 
-      const res = await fetch(`[https://generativelanguage.googleapis.com/v1beta/models/$](https://generativelanguage.googleapis.com/v1beta/models/$){model}:generateContent?key=${key}`, {
+      const res = await fetch('https://generativelanguage.googleapis.com/v1beta/models/' + model + ':generateContent?key=' + key, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         signal: controller.signal,
@@ -431,20 +474,28 @@ async function callGeminiJSON(promptText) {
 
       const data = await res.json();
       if (!res.ok) {
-        errorLog.push(`[${model}]: ${data.error?.message || res.status}`);
+        errorLog.push('[' + model + ']: ' + ((data.error && data.error.message) || res.status));
         continue;
       }
 
-      const parts = data.candidates?.[0]?.content?.parts || [];
-      const textPart = parts.find(p => p.text && !p.thought) || parts[parts.length - 1];
-      const parsed = extractCleanJSON(textPart?.text || '[]');
+      const parts = (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) || [];
+      let textPart = parts[parts.length - 1];
+      for (let j = 0; j < parts.length; j++) {
+        if (parts[j].text && !parts[j].thought) {
+          textPart = parts[j];
+          break;
+        }
+      }
+      const parsed = extractCleanJSON((textPart && textPart.text) || '[]');
 
       if (Array.isArray(parsed)) return parsed;
-      const firstArray = Object.values(parsed).find(v => Array.isArray(v));
-      if (firstArray) return firstArray;
+      const vals = Object.values(parsed);
+      for (let k = 0; k < vals.length; k++) {
+        if (Array.isArray(vals[k])) return vals[k];
+      }
       return [parsed];
     } catch (err) {
-      errorLog.push(`[${model}]: ${err.name === 'AbortError' ? 'Timed out (35s)' : err.message}`);
+      errorLog.push('[' + model + ']: ' + (err.name === 'AbortError' ? 'Timed out (35s)' : err.message));
     }
   }
 
@@ -454,14 +505,12 @@ async function callGeminiJSON(promptText) {
 async function aiDraftNewCategories() {
   try {
     const b = DB.brand || {};
-    const existing = (DB.categories || []).map(c => c.name).join(', ');
-    const prompt = `Company: ${b.company_name || 'RINISHA'} (${b.slogan || 'Digital Agency'}). Existing Categories: ${existing}.
-Suggest 5 NEW high-converting digital/tech service categories for the Indian B2B/B2C market.
-Return ONLY a valid JSON array of 5 objects with keys "name" and "description".`;
+    const existing = (DB.categories || []).map(function(c) { return c.name; }).join(', ');
+    const prompt = 'Company: ' + (b.company_name || 'RINISHA') + ' (' + (b.slogan || 'Digital Agency') + '). Existing Categories: ' + existing + '. Suggest 5 NEW high-converting digital/tech service categories for the Indian B2B/B2C market. Return ONLY a valid JSON array of 5 objects with keys "name" and "description".';
 
     const drafts = await callGeminiJSON(prompt);
     DB.categories = DB.categories || [];
-    drafts.forEach(d => {
+    drafts.forEach(function(d) {
       if (d && d.name) {
         DB.categories.push({
           id: 'cat_' + Math.random().toString(36).slice(2, 8),
@@ -481,14 +530,12 @@ Return ONLY a valid JSON array of 5 objects with keys "name" and "description".`
 
 async function aiGenerateSubcategories() {
   const catId = document.getElementById('sel_main_cat').value;
-  const cat = DB.categories.find(c => c.id === catId);
+  const cat = (DB.categories || []).find(function(c) { return c.id === catId; });
   if (!cat) return;
   try {
-    const prompt = `Main Category: ${cat.name} (${cat.description}). Target Market: India.
-Generate 6 specific Sub-Categories. Vary the pain point across sub-categories (customer drop-off, data theft, Google ranking drop, festival server crash, legal notice, competitor lead loss).
-Return ONLY a JSON array of objects with keys: "name", "india_hook_stat", "risk_type".`;
+    const prompt = 'Main Category: ' + cat.name + ' (' + cat.description + '). Target Market: India. Generate 6 specific Sub-Categories. Vary the pain point across sub-categories (customer drop-off, data theft, Google ranking drop, festival server crash, legal notice, competitor lead loss). Return ONLY a JSON array of objects with keys: "name", "india_hook_stat", "risk_type".';
     const subs = await callGeminiJSON(prompt);
-    subs.forEach(s => {
+    subs.forEach(function(s) {
       if (s && s.name) {
         DB.subcategories.push({
           id: 'sub_' + Math.random().toString(36).slice(2, 8),
@@ -499,7 +546,7 @@ Return ONLY a JSON array of objects with keys: "name", "india_hook_stat", "risk_
         });
       }
     });
-    await saveDatabaseToGitHub(`Generated sub-categories for ${cat.name}`);
+    await saveDatabaseToGitHub('Generated sub-categories for ' + cat.name);
     setStatus('✅ Sub-categories generated!');
   } catch (e) {
     setStatus('❌ ' + e.message, true);
@@ -509,46 +556,24 @@ Return ONLY a JSON array of objects with keys: "name", "india_hook_stat", "risk_
 async function aiGenerateVideoPrompts() {
   const catId = document.getElementById('sel_main_cat').value;
   const subId = document.getElementById('sel_sub_cat').value;
-  const cat = DB.categories.find(c => c.id === catId);
-  const sub = DB.subcategories.find(s => s.id === subId);
+  const cat = (DB.categories || []).find(function(c) { return c.id === catId; });
+  const sub = (DB.subcategories || []).find(function(s) { return s.id === subId; });
+  if (!cat) return;
 
   const count = parseInt(document.getElementById('gen_count').value || '2', 10);
   const version = document.getElementById('gen_version').value;
   const enableCta = document.getElementById('gen_cta_toggle').value === 'yes';
-  const ctaWord = document.getElementById('gen_cta_word').value.trim() || DB.brand.default_comment_word || 'RULES';
+  const ctaWord = document.getElementById('gen_cta_word').value.trim() || (DB.brand && DB.brand.default_comment_word) || 'RULES';
 
   const topicName = sub ? sub.name : cat.name;
   const hookStat = sub ? sub.india_hook_stat : 'Indian Business Market Benchmark';
   const riskAngle = sub ? sub.risk_type : 'Business Growth & Security Risk';
 
   try {
-    const prompt = `You are an elite Viral Reel Director & Motion Graphics Architect (inspired by Rinisha / Monk reels).
-Generate ${count} distinct, complete video production prompts (Version: ${version}) for:
-- Category: ${cat.name}
-- Topic / Sub-Category: ${topicName}
-- India Stat / Benchmark: ${hookStat}
-- Consequence / Risk Angle: ${riskAngle}
-- Company Name: ${DB.brand.company_name}
-- Company Slogan: ${DB.brand.slogan}
-- Website URL: ${DB.brand.website_url}
-- Contact: ${DB.brand.contact_info}
-- Comment CTA Enabled: ${enableCta ? 'YES (Ask viewer to comment "' + ctaWord + '" for free checklist/guide in DM + mention ' + DB.brand.company_name + ')' : 'NO (End with share hook + authority mention of ' + DB.brand.company_name + ')'}
-
-RULES:
-1. Spoken "director_script" MUST be in Devanagari Hindi with dramatic '...' and '—' pauses for Gemini 'Charon' deep voice.
-2. On-screen text ("headline_white", "headline_accent", "caption_hinglish", "widget_data") MUST be in crisp Hinglish (Roman script).
-3. Choose "widget_type" for each scene from:
-   ["JAIL_TRAP", "ALARM_SHOCK", "BIG_STAT_COUNTER", "BROWSER_FORM_SCAN", "MULTI_SITE_WARNING", "TIMELINE_DEADLINE", "NUMBERED_GRID_INTRO", "CHECKLIST_CARD", "TOGGLE_COMPARISON", "BROWSER_SECURITY_LOCK", "FLOWCHART_ALERT", "CTA_SHARE_DM_BRAND"].
-
-Return ONLY a JSON array of ${count} objects with keys:
-- "hook_title": string
-- "risk_angle": string
-- "director_script": full Devanagari Hindi script (60-90 sec)
-- "scenes": array of 10 to 12 scene objects, each with:
-  {"scene_id": 1, "duration_sec": 5, "pill_badge": "01 AUDIT", "headline_white": "Top line", "headline_accent": "Accent line", "widget_type": "CHECKLIST_CARD", "widget_data": {"card_title": "Title", "badge_text": "BADGE", "big_number": "₹250 Cr", "items": ["Point 1", "Point 2", "Point 3"]}, "caption_hinglish": "Hinglish caption with *accent* word"}`;
+    const prompt = 'You are an elite Viral Reel Director & Motion Graphics Architect (inspired by Rinisha / Monk reels). Generate ' + count + ' distinct, complete video production prompts (Version: ' + version + ') for: Category: ' + cat.name + ', Topic: ' + topicName + ', India Stat: ' + hookStat + ', Risk Angle: ' + riskAngle + ', Company Name: ' + DB.brand.company_name + ', Slogan: ' + DB.brand.slogan + ', Website: ' + DB.brand.website_url + ', Contact: ' + DB.brand.contact_info + ', Comment CTA Enabled: ' + (enableCta ? 'YES (Comment ' + ctaWord + ' for free DM guide)' : 'NO (Authority CTA only)') + '. RULES: 1. Spoken "director_script" MUST be in Devanagari Hindi with dramatic "..." and "—" pauses for Gemini Charon deep voice. 2. On-screen text ("headline_white", "headline_accent", "caption_hinglish", "widget_data") MUST be in crisp Hinglish (Roman script). 3. Choose "widget_type" for each scene from: ["JAIL_TRAP", "ALARM_SHOCK", "BIG_STAT_COUNTER", "BROWSER_FORM_SCAN", "MULTI_SITE_WARNING", "TIMELINE_DEADLINE", "NUMBERED_GRID_INTRO", "CHECKLIST_CARD", "TOGGLE_COMPARISON", "BROWSER_SECURITY_LOCK", "FLOWCHART_ALERT", "CTA_SHARE_DM_BRAND"]. Return ONLY a JSON array of ' + count + ' objects with keys: "hook_title", "risk_angle", "director_script", and "scenes" (array of 10 to 12 scene objects with keys: "scene_id", "duration_sec", "pill_badge", "headline_white", "headline_accent", "widget_type", "widget_data": {"card_title", "badge_text", "big_number", "items": []}, "caption_hinglish").';
 
     const generated = await callGeminiJSON(prompt);
-    generated.forEach(gp => {
+    generated.forEach(function(gp) {
       if (gp && gp.hook_title) {
         DB.prompts.unshift({
           id: 'p_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
@@ -566,8 +591,8 @@ Return ONLY a JSON array of ${count} objects with keys:
         });
       }
     });
-    await saveDatabaseToGitHub(`Generated ${generated.length} video prompts (${version})`);
-    setStatus(`✅ Generated ${generated.length} prompts!`);
+    await saveDatabaseToGitHub('Generated ' + generated.length + ' video prompts (' + version + ')');
+    setStatus('✅ Generated ' + generated.length + ' prompts!');
     showTab('tab_prompts');
   } catch (e) {
     setStatus('❌ ' + e.message, true);
@@ -577,46 +602,47 @@ Return ONLY a JSON array of ${count} objects with keys:
 function renderPromptsList() {
   const el = document.getElementById('prompts_list');
   el.innerHTML = '';
-  (DB.prompts || []).forEach((p, idx) => {
+  (DB.prompts || []).forEach(function(p, idx) {
     const statusColor = p.status === 'completed' ? 'bg-green-700' : (p.status === 'rendering' ? 'bg-amber-600' : 'bg-gray-700');
-    el.innerHTML += `
-      <div class="card p-5 space-y-3">
-        <div class="flex flex-wrap justify-between items-center gap-3">
-          <label class="flex items-center gap-3 cursor-pointer">
-            <input type="checkbox" class="prompt_check w-5 h-5" value="${p.id}" />
-            <span class="px-2.5 py-1 rounded text-xs font-bold ${statusColor}">${(p.status || 'draft').toUpperCase()}</span>
-            <span class="font-bold text-base">${p.hook_title}</span>
-            <span class="text-xs text-gray-400">(${p.category_name} → ${p.subcategory_name} • ${p.version_tag})</span>
-          </label>
-          <div class="flex items-center gap-2">
-            <select id="tpl_${idx}" onchange="updatePromptField(${idx})" class="text-xs">
-              <option ${p.selected_template.includes('Template 1') ? 'selected' : ''}>Template 1: Rinisha Dark Crimson</option>
-              <option ${p.selected_template.includes('Template 2') ? 'selected' : ''}>Template 2: Cyber Matrix Emerald</option>
-              <option ${p.selected_template.includes('Template 3') ? 'selected' : ''}>Template 3: Executive FinTech Gold</option>
-            </select>
-            <button onclick="triggerSinglePrompt('${p.id}')" class="px-3 py-1.5 rounded accent-btn text-xs">▶️ Render Now</button>
-            <button onclick="deletePrompt(${idx})" class="px-3 py-1 rounded bg-red-950 text-red-300 text-xs">🗑️ Delete</button>
-          </div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label class="text-xs text-gray-400">🎙️ Hindi Voiceover Script (Gemini 'Charon' Deep Voice)</label>
-            <textarea id="scr_${idx}" onchange="updatePromptField(${idx})" rows="5" class="w-full mt-1 text-xs">${p.director_script}</textarea>
-          </div>
-          <div>
-            <label class="text-xs text-gray-400">🎨 12-Scene Remotion Visual Blueprint (JSON)</label>
-            <textarea id="scn_${idx}" onchange="updatePromptField(${idx})" rows="5" class="w-full mt-1 text-xs font-mono">${JSON.stringify(p.scenes, null, 2)}</textarea>
-          </div>
-        </div>
-      </div>`;
+    const tpl = p.selected_template || 'Template 1: Rinisha Dark Crimson';
+    el.innerHTML +=
+      '<div class="card p-5 space-y-3">' +
+        '<div class="flex flex-wrap justify-between items-center gap-3">' +
+          '<label class="flex items-center gap-3 cursor-pointer">' +
+            '<input type="checkbox" class="prompt_check w-5 h-5" value="' + p.id + '" />' +
+            '<span class="px-2.5 py-1 rounded text-xs font-bold ' + statusColor + '">' + (p.status || 'draft').toUpperCase() + '</span>' +
+            '<span class="font-bold text-base">' + (p.hook_title || 'Untitled Prompt') + '</span>' +
+            '<span class="text-xs text-gray-400">(' + (p.category_name || '') + ' → ' + (p.subcategory_name || '') + ' • ' + (p.version_tag || 'v1') + ')</span>' +
+          '</label>' +
+          '<div class="flex items-center gap-2">' +
+            '<select id="tpl_' + idx + '" onchange="updatePromptField(' + idx + ')" class="text-xs">' +
+              '<option ' + (tpl.indexOf('Template 1') !== -1 ? 'selected' : '') + '>Template 1: Rinisha Dark Crimson</option>' +
+              '<option ' + (tpl.indexOf('Template 2') !== -1 ? 'selected' : '') + '>Template 2: Cyber Matrix Emerald</option>' +
+              '<option ' + (tpl.indexOf('Template 3') !== -1 ? 'selected' : '') + '>Template 3: Executive FinTech Gold</option>' +
+            '</select>' +
+            '<button type="button" onclick="triggerSinglePrompt(\'' + p.id + '\')" class="px-3 py-1.5 rounded accent-btn text-xs">▶️ Render Now</button>' +
+            '<button type="button" onclick="deletePrompt(' + idx + ')" class="px-3 py-1 rounded bg-red-950 text-red-300 text-xs">🗑️ Delete</button>' +
+          '</div>' +
+        '</div>' +
+        '<div class="grid grid-cols-1 md:grid-cols-2 gap-4">' +
+          '<div>' +
+            '<label class="text-xs text-gray-400">🎙️ Hindi Voiceover Script (Gemini Charon Deep Voice)</label>' +
+            '<textarea id="scr_' + idx + '" onchange="updatePromptField(' + idx + ')" rows="5" class="w-full mt-1 text-xs">' + (p.director_script || '') + '</textarea>' +
+          '</div>' +
+          '<div>' +
+            '<label class="text-xs text-gray-400">🎨 12-Scene Remotion Visual Blueprint (JSON)</label>' +
+            '<textarea id="scn_' + idx + '" onchange="updatePromptField(' + idx + ')" rows="5" class="w-full mt-1 text-xs font-mono">' + JSON.stringify(p.scenes || [], null, 2) + '</textarea>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
   });
 }
 
 function updatePromptField(idx) {
-  DB.prompts[idx].selected_template = document.getElementById(`tpl_${idx}`).value;
-  DB.prompts[idx].director_script = document.getElementById(`scr_${idx}`).value;
+  DB.prompts[idx].selected_template = document.getElementById('tpl_' + idx).value;
+  DB.prompts[idx].director_script = document.getElementById('scr_' + idx).value;
   try {
-    DB.prompts[idx].scenes = JSON.parse(document.getElementById(`scn_${idx}`).value);
+    DB.prompts[idx].scenes = JSON.parse(document.getElementById('scn_' + idx).value);
   } catch (e) {}
 }
 
@@ -630,41 +656,45 @@ async function triggerSinglePrompt(pid) {
 }
 
 async function triggerSelectedRenders() {
-  const checked = Array.from(document.querySelectorAll('.prompt_check:checked')).map(c => c.value);
-  if (!checked.length) return setStatus('Please check at least one prompt box (or click Render Now) to send to video production!', true);
+  const checked = Array.from(document.querySelectorAll('.prompt_check:checked')).map(function(c) { return c.value; });
+  if (!checked.length) {
+    setStatus('Please check at least one prompt box (or click Render Now) to send to video production!', true);
+    return;
+  }
   await dispatchRenderJobs(checked);
 }
 
-// ============================================================================
-// REAL VERIFIED GITHUB ACTIONS DISPATCHER (NO SILENT FAILURES!)
-// ============================================================================
 async function dispatchRenderJobs(promptIds) {
   const repo = document.getElementById('cfg_repo').value.trim();
   const token = document.getElementById('cfg_gh_token').value.trim();
   const geminiKey = document.getElementById('cfg_gemini_key').value.trim();
-  if (!repo || !token) return setStatus('GitHub Repo & PAT Token required in Settings!', true);
+  if (!repo || !token) {
+    setStatus('GitHub Repo & PAT Token required in Settings!', true);
+    return;
+  }
 
   setStatus('Saving prompt state & dispatching GitHub Actions workflow...');
 
-  promptIds.forEach(pid => {
-    const p = DB.prompts.find(x => x.id === pid);
+  promptIds.forEach(function(pid) {
+    const p = (DB.prompts || []).find(function(x) { return x.id === pid; });
     if (p) p.status = 'rendering';
   });
-  await saveDatabaseToGitHub(`Queue ${promptIds.length} prompt(s) for cloud production`);
+  await saveDatabaseToGitHub('Queue ' + promptIds.length + ' prompt(s) for cloud production');
 
   const headers = {
-    'Authorization': `Bearer ${token}`,
+    'Authorization': 'Bearer ' + token,
     'Accept': 'application/vnd.github+json',
     'Content-Type': 'application/json'
   };
 
   let successCount = 0;
-  let errors = [];
+  const errors = [];
 
-  for (const pid of promptIds) {
-    const res = await fetch(`[https://api.github.com/repos/$](https://api.github.com/repos/$){repo}/actions/workflows/render_and_release.yml/dispatches`, {
+  for (let i = 0; i < promptIds.length; i++) {
+    const pid = promptIds[i];
+    const res = await fetch('https://api.github.com/repos/' + repo + '/actions/workflows/render_and_release.yml/dispatches', {
       method: 'POST',
-      headers,
+      headers: headers,
       body: JSON.stringify({
         ref: 'main',
         inputs: { prompt_id: String(pid), gemini_api_key: geminiKey }
@@ -675,55 +705,50 @@ async function dispatchRenderJobs(promptIds) {
       successCount++;
     } else {
       const errBody = await res.text();
-      errors.push(`Prompt ${pid} (HTTP ${res.status}): ${errBody}`);
+      errors.push('Prompt ' + pid + ' (HTTP ' + res.status + '): ' + errBody);
     }
   }
 
   if (errors.length > 0) {
-    setStatus(`❌ GitHub Actions Dispatch Failed!
-${errors.join('
-')}
-
-Make sure your GitHub PAT Token has the 'workflow' scope enabled!`, true);
+    setStatus('❌ GitHub Actions Dispatch Failed! ' + errors.join(' | '), true);
   } else {
-    setStatus(`🚀 Successfully started ${successCount} Cloud Render job(s) on GitHub Actions! Switching to Tab 4 to monitor live progress...`);
+    setStatus('🚀 Successfully started ' + successCount + ' Cloud Render job(s) on GitHub Actions! Switching to Tab 4...');
     showTab('tab_releases');
-    setTimeout(() => syncFromGitHub(), 4000);
+    setTimeout(function() { syncFromGitHub(); }, 4000);
   }
 }
 
 function renderActionsAndReleases() {
-  // 1. Render Live GitHub Actions Runs
   const runsEl = document.getElementById('actions_runs_list');
   runsEl.innerHTML = '';
   const runs = window.LIVE_ACTION_RUNS || [];
   if (!runs.length) {
-    runsEl.innerHTML = `<div class="text-xs text-gray-400">No GitHub Action runs found yet. Click "Render Now" on any prompt in Tab 3!</div>`;
+    runsEl.innerHTML = '<div class="text-xs text-gray-400">No GitHub Action runs found yet. Click "Render Now" on any prompt in Tab 3!</div>';
   } else {
-    runs.slice(0, 6).forEach(r => {
+    runs.slice(0, 6).forEach(function(r) {
       const badgeColor = r.conclusion === 'success' ? 'bg-emerald-700' : (r.conclusion === 'failure' ? 'bg-red-700' : 'bg-amber-600 animate-pulse');
-      const statusText = r.status === 'completed' ? (r.conclusion || 'DONE').toUpperCase() : r.status.toUpperCase();
-      runsEl.innerHTML += `
-        <div class="p-3 rounded-lg bg-[#0d0e12] border border-gray-800 flex flex-wrap justify-between items-center gap-2">
-          <div class="flex items-center gap-3">
-            <span class="px-2.5 py-1 rounded text-xs font-bold ${badgeColor}">${statusText}</span>
-            <span class="font-bold text-sm">Run #${r.run_number}: ${r.display_title || r.name}</span>
-            <span class="text-xs text-gray-400">${new Date(r.created_at).toLocaleString()}</span>
-          </div>
-          <a href="${r.html_url}" target="_blank" class="px-3 py-1 rounded bg-gray-800 hover:bg-gray-700 text-xs font-bold">🔍 View Live Logs on GitHub ↗</a>
-        </div>`;
+      const statusText = r.status === 'completed' ? (r.conclusion || 'DONE').toUpperCase() : (r.status || 'RUNNING').toUpperCase();
+      runsEl.innerHTML +=
+        '<div class="p-3 rounded-lg bg-[#0d0e12] border border-gray-800 flex flex-wrap justify-between items-center gap-2">' +
+          '<div class="flex items-center gap-3">' +
+            '<span class="px-2.5 py-1 rounded text-xs font-bold ' + badgeColor + '">' + statusText + '</span>' +
+            '<span class="font-bold text-sm">Run #' + r.run_number + ': ' + (r.display_title || r.name) + '</span>' +
+            '<span class="text-xs text-gray-400">' + new Date(r.created_at).toLocaleString() + '</span>' +
+          '</div>' +
+          '<a href="' + r.html_url + '" target="_blank" class="px-3 py-1 rounded bg-gray-800 hover:bg-gray-700 text-xs font-bold">🔍 View Live Logs on GitHub ↗</a>' +
+        '</div>';
     });
   }
 
-  // 2. Render Completed Videos Grid
   const grid = document.getElementById('releases_grid');
   grid.innerHTML = '';
 
   const items = [];
   if (Array.isArray(window.LIVE_RELEASES) && window.LIVE_RELEASES.length) {
-    window.LIVE_RELEASES.forEach(rel => {
-      const mp4Asset = (rel.assets || []).find(a => a.name.endsWith('.mp4'));
-      const wavAsset = (rel.assets || []).find(a => a.name.endsWith('.wav'));
+    window.LIVE_RELEASES.forEach(function(rel) {
+      const assets = rel.assets || [];
+      const mp4Asset = assets.find(function(a) { return a.name.endsWith('.mp4'); });
+      const wavAsset = assets.find(function(a) { return a.name.endsWith('.wav'); });
       if (mp4Asset) {
         items.push({
           title: rel.name || rel.tag_name,
@@ -735,7 +760,7 @@ function renderActionsAndReleases() {
       }
     });
   } else {
-    (DB.rendered_videos || []).forEach(rv => {
+    (DB.rendered_videos || []).forEach(function(rv) {
       items.push({
         title: rv.tag,
         mp4_url: rv.mp4_url,
@@ -747,32 +772,30 @@ function renderActionsAndReleases() {
   }
 
   if (!items.length) {
-    grid.innerHTML = `<div class="text-sm text-gray-400">No completed video releases yet. Once a live job above turns GREEN (SUCCESS), click Refresh to watch & download your MP4 here!</div>`;
+    grid.innerHTML = '<div class="text-sm text-gray-400">No completed video releases yet. Once a live job above turns GREEN (SUCCESS), click Refresh to watch & download your MP4 here!</div>';
     return;
   }
 
-  items.forEach(it => {
-    grid.innerHTML += `
-      <div class="card p-5 space-y-3">
-        <div class="flex justify-between items-center">
-          <div class="font-bold text-base">${it.title}</div>
-          <span class="text-xs text-gray-400">${it.date}</span>
-        </div>
-        <video controls class="w-full max-h-[520px] rounded-xl bg-black border border-gray-800" src="${it.mp4_url}"></video>
-        <div class="flex flex-wrap gap-2 pt-2">
-          <a href="${it.mp4_url}" download class="px-4 py-2 rounded-lg accent-btn text-xs">⬇️ Download MP4</a>
-          ${it.wav_url ? `<a href="${it.wav_url}" download class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-xs font-bold">🎧 Download 'Charon' WAV</a>` : ''}
-          <a href="${it.release_url}" target="_blank" class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-xs font-bold">📦 View on GitHub Releases ↗</a>
-        </div>
-      </div>`;
+  items.forEach(function(it) {
+    grid.innerHTML +=
+      '<div class="card p-5 space-y-3">' +
+        '<div class="flex justify-between items-center">' +
+          '<div class="font-bold text-base">' + it.title + '</div>' +
+          '<span class="text-xs text-gray-400">' + it.date + '</span>' +
+        '</div>' +
+        '<video controls class="w-full max-h-[520px] rounded-xl bg-black border border-gray-800" src="' + it.mp4_url + '"></video>' +
+        '<div class="flex flex-wrap gap-2 pt-2">' +
+          '<a href="' + it.mp4_url + '" download class="px-4 py-2 rounded-lg accent-btn text-xs">⬇️ Download MP4</a>' +
+          (it.wav_url ? '<a href="' + it.wav_url + '" download class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-xs font-bold">🎧 Download Charon WAV</a>' : '') +
+          '<a href="' + it.release_url + '" target="_blank" class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-xs font-bold">📦 View on GitHub Releases ↗</a>' +
+        '</div>' +
+      '</div>';
   });
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', function() {
   loadLocalConfig();
-  if (document.getElementById('cfg_repo').value) {
-    syncFromGitHub();
-  }
+  syncFromGitHub();
 });
 </script>
 </body>

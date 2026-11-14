@@ -7,11 +7,12 @@ on:
         description: 'Prompt ID from database.json to render'
         required: true
       gemini_api_key:
-        description: 'Gemini API Key (optional if saved in Repo Secrets)'
+        description: 'Gemini API Key'
         required: false
 
 permissions:
   contents: write
+  actions: read
 
 jobs:
   produce-viral-reel:
@@ -44,7 +45,7 @@ jobs:
       - name: Install System Chromium & FFmpeg Libraries
         run: |
           sudo apt-get update
-          sudo apt-get install -y libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2 ffmpeg
+          sudo apt-get install -y libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2t64 ffmpeg || sudo apt-get install -y libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2 ffmpeg
 
       - name: Install Remotion Dependencies & Render 1080x1920 MP4
         working-directory: ./remotion_studio
@@ -56,9 +57,10 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PID: ${{ github.event.inputs.prompt_id }}
+          RUN_NO: ${{ github.run_number }}
         run: |
-          TAG="reel-${PID}-${GITHUB_RUN_NUMBER}"
-          gh release create "$TAG"             "./remotion_studio/out/reel_${PID}.mp4"             "./remotion_studio/public/voiceover.wav"             --title "🎬 Rendered Reel (${PID}) - Run #${GITHUB_RUN_NUMBER}"             --notes "Automatically generated with Gemini 2.5 'Charon' Studio Voice and Remotion 1080x1920 Engine."
+          TAG="reel-${PID}-${RUN_NO}"
+          gh release create "$TAG" "./remotion_studio/out/reel_${PID}.mp4" "./remotion_studio/public/voiceover.wav" --title "Rendered Reel (${PID}) - Run #${RUN_NO}" --notes "Automatically generated with Gemini Charon Studio Voice and Remotion 1080x1920 Engine."
 
       - name: Update database.json with Direct Release Download URL
         env:
@@ -66,35 +68,8 @@ jobs:
           REPO: ${{ github.repository }}
           RUN_NO: ${{ github.run_number }}
         run: |
-          python - << 'EOF'
-          import os, json, time
-          from pathlib import Path
-          pid = os.environ["PID"]
-          repo = os.environ["REPO"]
-          run_no = os.environ["RUN_NO"]
-          tag = f"reel-{pid}-{run_no}"
-          mp4_url = f"https://github.com/{repo}/releases/download/{tag}/reel_{pid}.mp4"
-          wav_url = f"https://github.com/{repo}/releases/download/{tag}/voiceover.wav"
-          rel_page = f"https://github.com/{repo}/releases/tag/{tag}"
-
-          db_path = Path("data/database.json")
-          db = json.loads(db_path.read_text(encoding="utf-8"))
-          for p in db.get("prompts", []):
-              if p.get("id") == pid:
-                  p["status"] = "completed"
-                  p["mp4_url"] = mp4_url
-                  p["wav_url"] = wav_url
-                  p["release_url"] = rel_page
-          db.setdefault("rendered_videos", []).insert(0, {
-              "prompt_id": pid,
-              "tag": tag,
-              "mp4_url": mp4_url,
-              "wav_url": wav_url,
-              "release_url": rel_page,
-              "rendered_at": time.strftime("%Y-%m-%d %H:%M:%S UTC", time.gmtime())
-          })
-          db_path.write_text(json.dumps(db, ensure_ascii=False, indent=2), encoding="utf-8")
-          EOF
+          git pull --rebase origin main || true
+          python scripts/post_release_updater.py
           git config user.name "Autonomous-Video-Bot"
           git config user.email "bot@users.noreply.github.com"
           git add data/database.json

@@ -1,0 +1,50 @@
+{
+  "brand": {
+    "company_name": "RINISHA",
+    "slogan": "WHERE DESIGN MEETS PERFORMANCE",
+    "website_url": "aapki-website.in",
+    "contact_info": "+91 98765 43210",
+    "default_comment_word": "RULES"
+  },
+  "categories": [
+    {
+      "id": "cat_1",
+      "name": "Website Security & Legal Compliance",
+      "description": "DPDP Act 2027, SSL encryption, cookie consent, CERT-In rules, customer data leaks",
+      "source": "manual",
+      "status": "approved"
+    },
+    {
+      "id": "cat_2",
+      "name": "SEO & Google Search Traffic",
+      "description": "Core Web Vitals, AI Search ranking drop, spam penalty, local map pack visibility",
+      "source": "manual",
+      "status": "approved"
+    },
+    {
+      "id": "cat_3",
+      "name": "High-Conversion Web & App Development",
+      "description": "3-second mobile load speed, checkout drop-offs, scalable architecture, UI/UX trust",
+      "source": "manual",
+      "status": "approved"
+    }
+  ],
+  "subcategories": [
+    {
+      "id": "sub_1",
+      "category_id": "cat_1",
+      "name": "DPDP Act Website Compliance Checklist",
+      "india_hook_stat": "₹250 Crore Penalty under India DPDP Act",
+      "risk_type": "Massive Financial & Legal Penalty"
+    },
+    {
+      "id": "sub_2",
+      "category_id": "cat_3",
+      "name": "Slow Mobile Checkout & UPI Abandonment",
+      "india_hook_stat": "53% Indian shoppers close websites taking over 3 seconds",
+      "risk_type": "Daily Sales & Lead Loss to Competitors"
+    }
+  ],
+  "prompts": [],
+  "rendered_videos": []
+}

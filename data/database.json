@@ -83,6 +83,343 @@
   ],
   "prompts": [
     {
+      "id": "p_1794629840916_lb5b",
+      "category_name": "SEO & Google Search Traffic",
+      "subcategory_name": "SEO & Google Search Traffic",
+      "version_tag": "v5",
+      "hook_title": "₹250 Crore Penalty SEO Trap",
+      "risk_angle": "Massive Financial & Customer Loss",
+      "enable_comment_cta": true,
+      "comment_keyword": "RULES",
+      "selected_template": "Template 1: Rinisha Dark Crimson",
+      "director_script": "क्या आपको... जेल हो सकती है? सिर्फ़ अपनी वेबसाइट की, एक ग़लती की वजह से?\n\nजेल? ... शायद नहीं। लेकिन जो हो सकता है... वो सुनकर आपकी नींद उड़ जाएगी!\n\n₹250 Crore Penalty / 68% Traffic Drop!\n\nरोज़ हज़ारों बिज़नेस अपनी वेबसाइट पर यही चुपके से ग़लती करते हैं।\n\nअक्सर बिज़नेस को पता भी नहीं कि वो ये ग़लती रोज़ कर रहे हैं।\n\nGoogle का नया एल्गोरिदम अपडेट बिल्कुल माफ़ नहीं कर रहा है।\n\nतो अपने बिज़नेस को बचाने के लिए, ये चीज़ें अभी अपनी वेबसाइट पर चेक करो:\n\nपहला — अपनी वेबसाइट का टेक्निकल SEO ऑडिट तुरंत करवाओ।\n\nदूसरा — डुप्लीकेट कंटेंट और ब्रोकन लिंक्स को पूरी तरह हटा दो।\n\nतीसरा — SSL सर्टिफिकेट और वेबसाइट की सिक्योरिटी टाइट रखो।\n\nचौथा — मोबाइल स्पीड और कोर वेब विटल्स को ग्रीन करो।\n\nपाँचवाँ — लोकल SEO और Google My Business प्रोफाइल ऑप्टिमाइज़ करो।\n\nछठा — सही कीवर्ड्स और यूजर इंटेंट के बिना ब्लॉग मत लिखो।\n\nअपनी वेबसाइट को बचाना चाहते हो? नीचे कमेंट में 'RULES' टाइप करो, और Monk की टीम से फ्री चेकलिस्ट DM में पाओ!",
+      "scenes": [
+        {
+          "scene_id": 1,
+          "spoken_hindi": "क्या आपको... जेल हो सकती है? सिर्फ़ अपनी वेबसाइट की, एक ग़लती की वजह से?",
+          "pill_badge": "",
+          "headline_white": "Website Ki Ek",
+          "headline_accent": "Galti Se Jail?",
+          "widget_type": "JAIL_TRAP",
+          "widget_data": {
+            "card_title": "Legal Risk Alert",
+            "badge_text": "URGENT",
+            "big_number": "",
+            "items": [
+              "Website Audit",
+              "SEO Penalties",
+              "Data Laws"
+            ]
+          },
+          "captions": [
+            "Kya aapko *jail*",
+            "ho sakti *hai*...",
+            "sirf ek *galti* se?"
+          ]
+        },
+        {
+          "scene_id": 2,
+          "spoken_hindi": "जेल? ... शायद नहीं। लेकिन जो हो सकता है... वो सुनकर आपकी नींद उड़ जाएगी!",
+          "pill_badge": "",
+          "headline_white": "Jail Nahi Par",
+          "headline_accent": "Bada Nuksan Hoga!",
+          "widget_type": "ALARM_SHOCK",
+          "widget_data": {
+            "card_title": "Financial Shock",
+            "badge_text": "DANGER",
+            "big_number": "",
+            "items": [
+              "Traffic Drop",
+              "Revenue Loss",
+              "Zero Leads"
+            ]
+          },
+          "captions": [
+            "Jail nahi *shayad*...",
+            "par *nuksan*",
+            "hosh uda *dega*!"
+          ]
+        },
+        {
+          "scene_id": 3,
+          "spoken_hindi": "₹250 Crore Penalty / 68% Traffic Drop!",
+          "pill_badge": "",
+          "headline_white": "250 Crore Fine",
+          "headline_accent": "68% Traffic Drop",
+          "widget_type": "BIG_STAT_COUNTER",
+          "widget_data": {
+            "card_title": "Penalty Stats",
+            "badge_text": "CRITICAL",
+            "big_number": "₹250 Cr",
+            "items": [
+              "68% Traffic Loss",
+              "Google Penalty",
+              "Zero Rankings"
+            ]
+          },
+          "captions": [
+            "*250 Crore*",
+            "ka fine *aur*...",
+            "*68%* traffic drop!"
+          ]
+        },
+        {
+          "scene_id": 4,
+          "spoken_hindi": "रोज़ हज़ारों बिज़नेस अपनी वेबसाइट पर यही चुपके से ग़लती करते हैं।",
+          "pill_badge": "",
+          "headline_white": "Roz Ye Galti",
+          "headline_accent": "Karte Hain Log",
+          "widget_type": "BROWSER_FORM_SCAN",
+          "widget_data": {
+            "card_title": "Daily SEO Mistake",
+            "badge_text": "WARNING",
+            "big_number": "",
+            "items": [
+              "Broken Links",
+              "Bad Meta Tags",
+              "No SSL"
+            ]
+          },
+          "captions": [
+            "Roz hazaro *business*",
+            "ye *galti*",
+            "karte *hain*."
+          ]
+        },
+        {
+          "scene_id": 5,
+          "spoken_hindi": "अक्सर बिज़नेस को पता भी नहीं कि वो ये ग़लती रोज़ कर रहे हैं।",
+          "pill_badge": "",
+          "headline_white": "Pata Hi Nahi",
+          "headline_accent": "Chupke Se Nuksan",
+          "widget_type": "MULTI_SITE_WARNING",
+          "widget_data": {
+            "card_title": "Hidden Risk",
+            "badge_text": "ALERT",
+            "big_number": "",
+            "items": [
+              "Unaware Owners",
+              "Silent Killer",
+              "Rank Plummet"
+            ]
+          },
+          "captions": [
+            "Pata hi *nahi*",
+            "hota business *ko*...",
+            "ki kya *ho* raha hai."
+          ]
+        },
+        {
+          "scene_id": 6,
+          "spoken_hindi": "Google का नया एल्गोरिदम अपडेट बिल्कुल माफ़ नहीं कर रहा है।",
+          "pill_badge": "",
+          "headline_white": "Google Update",
+          "headline_accent": "No More Warnings",
+          "widget_type": "TIMELINE_DEADLINE",
+          "widget_data": {
+            "card_title": "Deadline Active",
+            "badge_text": "URGENT",
+            "big_number": "24H",
+            "items": [
+              "Algorithm Shift",
+              "Strict Penalty",
+              "Fix Now"
+            ]
+          },
+          "captions": [
+            "Google ka *update*",
+            "bilkul *maaf*",
+            "nahi *karega*."
+          ]
+        },
+        {
+          "scene_id": 7,
+          "spoken_hindi": "तो अपने बिज़नेस को बचाने के लिए, ये चीज़ें अभी अपनी वेबसाइट पर चेक करो:",
+          "pill_badge": "",
+          "headline_white": "Bachane Ke Liye",
+          "headline_accent": "Ye 6 Cheezein Check Karo",
+          "widget_type": "NUMBERED_GRID_INTRO",
+          "widget_data": {
+            "card_title": "Action Checklist",
+            "badge_text": "AUDIT",
+            "big_number": "6",
+            "items": [
+              "Point 1 to 6",
+              "Quick Fixes",
+              "SEO Safety"
+            ]
+          },
+          "captions": [
+            "Business *bachane*",
+            "ke liye *ye*...",
+            "check *karo*!"
+          ]
+        },
+        {
+          "scene_id": 8,
+          "spoken_hindi": "पहला — अपनी वेबसाइट का टेक्निकल SEO ऑडिट तुरंत करवाओ।",
+          "pill_badge": "01 AUDIT",
+          "headline_white": "Pehla Step",
+          "headline_accent": "Technical SEO Audit",
+          "widget_type": "CHECKLIST_CARD",
+          "widget_data": {
+            "card_title": "Technical SEO",
+            "badge_text": "CHECK 01",
+            "big_number": "01",
+            "items": [
+              "Crawl Errors",
+              "Speed Check",
+              "Index Status"
+            ]
+          },
+          "captions": [
+            "Pehla — *technical*",
+            "SEO *audit*",
+            "karwao *turant*."
+          ]
+        },
+        {
+          "scene_id": 9,
+          "spoken_hindi": "दूसरा — डुप्लीकेट कंटेंट और ब्रोकन लिंक्स को पूरी तरह हटा दो।",
+          "pill_badge": "02 CONTENT",
+          "headline_white": "Dusra Step",
+          "headline_accent": "Remove Broken Links",
+          "widget_type": "TOGGLE_COMPARISON",
+          "widget_data": {
+            "card_title": "Content Fix",
+            "badge_text": "CHECK 02",
+            "big_number": "02",
+            "items": [
+              "No Duplicate",
+              "Fix 404",
+              "Clean URLs"
+            ]
+          },
+          "captions": [
+            "Dusra — *duplicate*",
+            "content aur *links*",
+            "hata *do*."
+          ]
+        },
+        {
+          "scene_id": 10,
+          "spoken_hindi": "तीसरा — SSL सर्टिफिकेट और वेबसाइट की सिक्योरिटी टाइट रखो।",
+          "pill_badge": "03 SECURITY",
+          "headline_white": "Tisra Step",
+          "headline_accent": "SSL & Security Lock",
+          "widget_type": "BROWSER_SECURITY_LOCK",
+          "widget_data": {
+            "card_title": "Security Check",
+            "badge_text": "CHECK 03",
+            "big_number": "03",
+            "items": [
+              "SSL Active",
+              "HTTPS Secure",
+              "No Malware"
+            ]
+          },
+          "captions": [
+            "Tisra — *SSL*",
+            "certificate aur *security*",
+            "tight *rakho*."
+          ]
+        },
+        {
+          "scene_id": 11,
+          "spoken_hindi": "चौथा — मोबाइल स्पीड और कोर वेब विटल्स को ग्रीन करो।",
+          "pill_badge": "04 SPEED",
+          "headline_white": "Chautha Step",
+          "headline_accent": "Core Web Vitals",
+          "widget_type": "FLOWCHART_ALERT",
+          "widget_data": {
+            "card_title": "Speed Audit",
+            "badge_text": "CHECK 04",
+            "big_number": "04",
+            "items": [
+              "Mobile Speed",
+              "Green Vitals",
+              "Fast Loading"
+            ]
+          },
+          "captions": [
+            "Chautha — *mobile*",
+            "speed aur *vitals*",
+            "green *karo*."
+          ]
+        },
+        {
+          "scene_id": 12,
+          "spoken_hindi": "पाँचवाँ — लोकल SEO और Google My Business प्रोफाइल ऑप्टिमाइज़ करो।",
+          "pill_badge": "05 LOCAL",
+          "headline_white": "Panchva Step",
+          "headline_accent": "Local SEO Setup",
+          "widget_type": "CHECKLIST_CARD",
+          "widget_data": {
+            "card_title": "Local SEO",
+            "badge_text": "CHECK 05",
+            "big_number": "05",
+            "items": [
+              "GMB Profile",
+              "Local Citations",
+              "Reviews Setup"
+            ]
+          },
+          "captions": [
+            "Panchva — *local*",
+            "SEO aur *GMB*",
+            "optimize *karo*."
+          ]
+        },
+        {
+          "scene_id": 13,
+          "spoken_hindi": "छठा — सही कीवर्ड्स और यूजर इंटेंट के बिना ब्लॉग मत लिखो।",
+          "pill_badge": "06 KEYWORDS",
+          "headline_white": "Chhatha Step",
+          "headline_accent": "User Intent Focus",
+          "widget_type": "TOGGLE_COMPARISON",
+          "widget_data": {
+            "card_title": "Keyword Strategy",
+            "badge_text": "CHECK 06",
+            "big_number": "06",
+            "items": [
+              "Right Keywords",
+              "User Intent",
+              "Smart Blogging"
+            ]
+          },
+          "captions": [
+            "Chhatha — *keywords*",
+            "aur intent *dekhein*...",
+            "tabhi *likhein*."
+          ]
+        },
+        {
+          "scene_id": 14,
+          "spoken_hindi": "अपनी वेबसाइट को बचाना चाहते हो? नीचे कमेंट में 'RULES' टाइप करो, और Monk की टीम से फ्री चेकलिस्ट DM में पाओ!",
+          "pill_badge": "CTA",
+          "headline_white": "Comment RULES",
+          "headline_accent": "Free Checklist DM",
+          "widget_type": "CTA_SHARE_DM_BRAND",
+          "widget_data": {
+            "card_title": "Monk SEO Audit",
+            "badge_text": "FREE DM",
+            "big_number": "DM",
+            "items": [
+              "Comment RULES",
+              "Get Free Audit",
+              "Powered by Monk"
+            ]
+          },
+          "captions": [
+            "Comment mein *RULES*",
+            "type *karo*...",
+            "aur Monk *se* checklist pao!"
+          ]
+        }
+      ],
+      "status": "draft"
+    },
+    {
       "id": "p_1794623832776_a20u",
       "category_name": "Website Security & Legal Compliance",
       "subcategory_name": "Website Security & Legal Compliance",

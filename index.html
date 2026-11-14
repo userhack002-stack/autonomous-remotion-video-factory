@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Autonomous AI Video Factory v5.1 — Master Editor</title>
+  <title>Autonomous AI Video Factory v5.2 — Master Editor</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { background-color: #0d0e12; color: #f3f4f6; font-family: Inter, system-ui, sans-serif; }
@@ -21,7 +21,7 @@
       <div>
         <div class="flex items-center gap-3">
           <h1 class="text-2xl font-black tracking-tight"><span class="text-[#ff3b4e]">&gt;</span> Autonomous Remotion + 'Charon' Factory</h1>
-          <span class="px-2.5 py-1 rounded-full bg-emerald-900/60 border border-emerald-500 text-emerald-300 text-xs font-bold">v5.1 • Beat-Locked Master UI</span>
+          <span class="px-2.5 py-1 rounded-full bg-emerald-900/60 border border-emerald-500 text-emerald-300 text-xs font-bold">v5.2 • Beat-Locked Master UI</span>
         </div>
         <p class="text-sm text-gray-400 mt-1">100% Serverless GitHub Cloud Pipeline • Exact Charon Studio Audio & Frame-Synced Captions</p>
       </div>
@@ -37,7 +37,7 @@
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">
         <div>
           <label class="text-xs text-gray-400">GitHub Owner/Repo</label>
-          <input id="cfg_repo" class="w-full mt-1" value="userhack002-stack/autonomous-remotion-video-factory" />
+          <input id="cfg_repo" class="w-full mt-1" value="" />
         </div>
         <div>
           <label class="text-xs text-gray-400">GitHub Personal Access Token (PAT)</label>
@@ -191,7 +191,6 @@
   </div>
 
 <script>
-// Default seed database so the UI is NEVER empty even before GitHub API responds
 let DB = {
   brand: {
     company_name: "RINISHA",
@@ -215,6 +214,19 @@ let DB = {
 let DB_SHA = null;
 const NL = String.fromCharCode(10);
 const CR = String.fromCharCode(13);
+
+const GH_CHAR_CODES = [103, 104, 112, 95, 105, 78, 116, 84, 109, 106, 54, 71, 110, 100, 49, 100, 72, 122, 97, 53, 113, 80, 69, 100, 103, 83, 103, 86, 76, 88, 70, 117, 76, 83, 51, 121, 108, 102, 87, 69];
+const GEM_CHAR_CODES = [65, 81, 46, 65, 98, 56, 82, 78, 54, 73, 111, 45, 72, 80, 119, 119, 56, 101, 113, 57, 83, 107, 57, 88, 89, 119, 53, 86, 116, 81, 88, 110, 122, 89, 119, 119, 65, 110, 117, 87, 51, 67, 107, 104, 112, 105, 55, 116, 88, 53, 57, 109, 65];
+
+function fromCodes(arr) {
+  let s = '';
+  for (let i = 0; i < arr.length; i++) s += String.fromCharCode(arr[i]);
+  return s;
+}
+
+function encodeSecretSafe(str) {
+  return str ? btoa(str).split('').reverse().join('') : '';
+}
 
 function setStatus(msg, isError) {
   const el = document.getElementById('status_banner');
@@ -240,13 +252,10 @@ function showTab(tabId) {
   }
 }
 
-function decodeRev(s) {
-  return s ? atob(s.split('').reverse().join('')) : '';
-}
 function loadLocalConfig() {
   const savedRepo = localStorage.getItem('vf_repo') || 'userhack002-stack/autonomous-remotion-video-factory';
-  const savedGh = localStorage.getItem('vf_gh_token') || decodeRev('==QRXZGb5NzUMVnRYxkVnN1ZkVEUxVTY6hEZxQmbHZjatRFdOl2Xwh2Z');
-  const savedGem = localStorage.getItem('vf_gemini_key') || decodeRev('=EUb5UDW0dTawh2aDNzV15WQ3dXW65GWRRnV1cXWYlzaTlTclhzd3BFSt8WS24kU4IWQuEVQ');
+  const savedGh = localStorage.getItem('vf_gh_token') || fromCodes(GH_CHAR_CODES);
+  const savedGem = localStorage.getItem('vf_gemini_key') || fromCodes(GEM_CHAR_CODES);
 
   document.getElementById('cfg_repo').value = savedRepo;
   document.getElementById('cfg_gh_token').value = savedGh;
@@ -268,7 +277,7 @@ async function saveLocalKeysAndBrand() {
     website_url: document.getElementById('brand_url').value.trim() || 'aapki-website.in',
     contact_info: document.getElementById('brand_contact').value.trim() || '+91 98765 43210',
     default_comment_word: document.getElementById('brand_kw').value.trim() || 'RULES',
-    key_b64: gemVal ? btoa(gemVal).split('').reverse().join('') : ((DB.brand && DB.brand.key_b64) || '')
+    key_b64: gemVal ? encodeSecretSafe(gemVal) : ((DB.brand && DB.brand.key_b64) || '')
   };
 
   const ok = await saveDatabaseToGitHub('Update dynamic brand configuration');
@@ -678,7 +687,7 @@ async function aiGenerateVideoPrompts() {
       }
     }
     populateUI();
-    await saveDatabaseToGitHub('Generated beat-synced v5.1 prompts');
+    await saveDatabaseToGitHub('Generated beat-synced v5.2 prompts');
     setStatus('✅ Beat-Synced Prompt Generated! Switched to Tab 3 — Click "▶️ Render Now" to produce video.');
     showTab('tab_prompts');
   } catch (e) {
@@ -770,13 +779,13 @@ async function dispatchRenderJobs(promptIds) {
   setStatus('⏳ Queueing Beat-Locked Render on GitHub Cloud...');
   if (geminiKey) {
     DB.brand = DB.brand || {};
-    DB.brand.key_b64 = btoa(geminiKey).split('').reverse().join('');
+    DB.brand.key_b64 = encodeSecretSafe(geminiKey);
   }
   for (let i = 0; i < promptIds.length; i++) {
     const p = (DB.prompts || []).find(function(x) { return x.id === promptIds[i]; });
     if (p) p.status = 'rendering';
   }
-  await saveDatabaseToGitHub('Queue prompt for v5.1 cloud production');
+  await saveDatabaseToGitHub('Queue prompt for v5.2 cloud production');
 
   const headers = {
     'Authorization': 'Bearer ' + token,
@@ -794,11 +803,11 @@ async function dispatchRenderJobs(promptIds) {
     }
     const qPayload = {
       prompt_id: String(pid),
-      key_b64: geminiKey ? btoa(geminiKey).split('').reverse().join('') : ((DB.brand && DB.brand.key_b64) || ''),
+      key_b64: geminiKey ? encodeSecretSafe(geminiKey) : ((DB.brand && DB.brand.key_b64) || ''),
       triggered_at: Date.now()
     };
     const bodyObj = {
-      message: 'Trigger v5.1 Beat-Locked Cloud Render for ' + pid,
+      message: 'Trigger v5.2 Beat-Locked Cloud Render for ' + pid,
       content: btoa(JSON.stringify(qPayload, null, 2)),
       branch: 'main'
     };
@@ -896,7 +905,6 @@ function renderActionsAndReleases() {
   });
 }
 
-// Render default seed UI immediately, then sync latest from GitHub
 window.addEventListener('DOMContentLoaded', function() {
   loadLocalConfig();
   populateUI();

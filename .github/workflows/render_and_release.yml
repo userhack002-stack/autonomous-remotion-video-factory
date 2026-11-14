@@ -1,18 +1,22 @@
 name: Cloud Render & Publish to GitHub Releases
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'data/render_queue.json'
   workflow_dispatch:
     inputs:
       prompt_id:
         description: 'Prompt ID from database.json to render'
-        required: true
+        required: false
       gemini_api_key:
         description: 'Gemini API Key'
         required: false
 
 permissions:
   contents: write
-  actions: read
 
 jobs:
   produce-viral-reel:
@@ -28,8 +32,11 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install Google GenAI SDK
-        run: pip install google-genai
+      - name: Install System Chromium, FFmpeg & Voice Engines
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2t64 ffmpeg || sudo apt-get install -y libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2 ffmpeg
+          pip install google-genai edge-tts
 
       - name: Generate 'Charon' Studio Audio & Sync Remotion Scenes
         env:
@@ -42,36 +49,32 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install System Chromium & FFmpeg Libraries
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2t64 ffmpeg || sudo apt-get install -y libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2 ffmpeg
-
       - name: Install Remotion Dependencies & Render 1080x1920 MP4
         working-directory: ./remotion_studio
         run: |
+          PID=$(cat ../data/active_prompt_id.txt)
           npm install
-          npx remotion render src/index.ts ViralAgencyReel out/reel_${{ github.event.inputs.prompt_id }}.mp4 --codec=h264
+          npx remotion render src/index.ts ViralAgencyReel "out/reel_${PID}.mp4" --codec=h264
 
-      - name: Publish MP4 & WAV to GitHub Releases
+      - name: Publish MP4 & Audible WAV to GitHub Releases
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PID: ${{ github.event.inputs.prompt_id }}
           RUN_NO: ${{ github.run_number }}
         run: |
+          PID=$(cat data/active_prompt_id.txt)
           TAG="reel-${PID}-${RUN_NO}"
-          gh release create "$TAG" "./remotion_studio/out/reel_${PID}.mp4" "./remotion_studio/public/voiceover.wav" --title "Rendered Reel (${PID}) - Run #${RUN_NO}" --notes "Automatically generated with Gemini Charon Studio Voice and Remotion 1080x1920 Engine."
+          gh release create "$TAG" "./remotion_studio/out/reel_${PID}.mp4" "./remotion_studio/public/voiceover.wav" --title "🎬 Rendered Reel (${PID}) - Run #${RUN_NO}" --notes "Automatically generated with Full Hindi Voiceover and Remotion 1080x1920 Engine."
 
       - name: Update database.json with Direct Release Download URL
         env:
-          PID: ${{ github.event.inputs.prompt_id }}
           REPO: ${{ github.repository }}
           RUN_NO: ${{ github.run_number }}
         run: |
+          export PID=$(cat data/active_prompt_id.txt)
           git pull --rebase origin main || true
           python scripts/post_release_updater.py
           git config user.name "Autonomous-Video-Bot"
           git config user.email "bot@users.noreply.github.com"
           git add data/database.json
-          git commit -m "chore: attach rendered MP4 release link for ${PID}" || true
+          git commit -m "chore: attach rendered MP4 release link for ${PID} [skip ci]" || true
           git push origin main

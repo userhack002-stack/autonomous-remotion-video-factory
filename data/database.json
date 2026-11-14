@@ -80,6 +80,440 @@
       "risk_type": "Daily Sales & Lead Loss to Competitors"
     }
   ],
-  "prompts": [],
+  "prompts": [
+    {
+      "id": "p_1794623832776_a20u",
+      "category_name": "Website Security & Legal Compliance",
+      "subcategory_name": "Website Security & Legal Compliance",
+      "version_tag": "v1",
+      "hook_title": "CERT-In Cyber Mandate: Google Blacklist Trap",
+      "risk_angle": "Business Growth & Security Risk",
+      "enable_comment_cta": true,
+      "comment_keyword": "RULES",
+      "selected_template": "Template 1: Rinisha Dark Crimson",
+      "director_script": "क्या कल सुबह आपकी वेबसाइट पर... 'Deceptive Site Ahead' का रेड स्क्रीन आ सकता है? — जी हाँ। भारत में हर महीने 1 लाख से ज़्यादा साइबर हमले बिज़नेस वेबसाइट्स पर हो रहे हैं... CERT-In के नियम के मुताबिक अगर 6 घंटे में आपने डेटा इंसीडेंट रिपोर्ट नहीं किया... तो कानूनी कार्रवाई तय है! हैकर्स आपकी साइट पर स्पैम बैकलिंक्स और क्रेडिट कार्ड स्क्रैपर कोड चुपके से डाल देते हैं... नतीजा? गूगल सर्च से आपका डोमेन हमेशा के लिए ब्लैकलिस्ट! और पेमेंट गेटवे आपका मर्चेंट अकाउंट हमेशा के लिए सस्पेंड कर देता है। मोंक के साथ अपनी वेबसाइट को बनाइए अभेद्य किला। अभी कमेंट में टाइप करें 'RULES'... और पाएं मोंक का एक्सक्लूसिव 21-पॉइंट साइबर सिक्योरिटी चेकलिस्ट।",
+      "scenes": [
+        {
+          "scene_id": 1,
+          "duration_sec": 5,
+          "pill_badge": "01 RED FLAG",
+          "headline_white": "Google Red Screen",
+          "headline_accent": "Deceptive Site Warning!",
+          "widget_type": "ALARM_SHOCK",
+          "widget_data": {
+            "card_title": "Domain Blacklist Event",
+            "badge_text": "TRAFFIC ZERO",
+            "big_number": "100% Drop",
+            "items": [
+              "Browser blocking visitors completely",
+              "Google Ads suspended immediately",
+              "SEO authority wiped out permanently"
+            ]
+          },
+          "caption_hinglish": "Ek silent hack aur Google aapki site ko *Deceptive Site* mark kar dega."
+        },
+        {
+          "scene_id": 2,
+          "duration_sec": 6,
+          "pill_badge": "02 INCIDENT STAT",
+          "headline_white": "1.39 Lakh Attacks",
+          "headline_accent": "Reported To CERT-In Yearly",
+          "widget_type": "BIG_STAT_COUNTER",
+          "widget_data": {
+            "card_title": "Indian Cyber Threat Report",
+            "badge_text": "REAL-TIME ATTACKS",
+            "big_number": "1,39,000+",
+            "items": [
+              "Targeting SME business websites",
+              "Automated bot scripts scanning ports",
+              "Ransomware backdoor insertions"
+            ]
+          },
+          "caption_hinglish": "Saal bhar mein *1.39 Lakh+* cyber security attacks record huye hain."
+        },
+        {
+          "scene_id": 3,
+          "duration_sec": 6,
+          "pill_badge": "03 MASS INFECTION",
+          "headline_white": "7 Out Of 10 Websites",
+          "headline_accent": "Silently Injected With Malware",
+          "widget_type": "MULTI_SITE_WARNING",
+          "widget_data": {
+            "card_title": "Vulnerability Scan",
+            "badge_text": "INFECTION SPREAD",
+            "big_number": "70% Sites",
+            "items": [
+              "Hidden crypto-mining background scripts",
+              "Japanese keyword spam injection",
+              "Silent customer session hijacking"
+            ]
+          },
+          "caption_hinglish": "70% Indian sites ko pata bhi nahi hota ki wo *malware* host kar rahi hain."
+        },
+        {
+          "scene_id": 4,
+          "duration_sec": 5,
+          "pill_badge": "04 INSECURE FORMS",
+          "headline_white": "Checkout & Lead Scrape",
+          "headline_accent": "Customer OTPs Stolen",
+          "widget_type": "BROWSER_FORM_SCAN",
+          "widget_data": {
+            "card_title": "Checkout Vulnerability",
+            "badge_text": "DATA THEFT",
+            "big_number": "Zero WAF",
+            "items": [
+              "No Web Application Firewall protection",
+              "Form inputs copied to foreign C2 server",
+              "Direct breach of IT Act Section 43A"
+            ]
+          },
+          "caption_hinglish": "Aapke customers ka personal data seedhe *hackers* ke haath mein jaa raha hai."
+        },
+        {
+          "scene_id": 5,
+          "duration_sec": 6,
+          "pill_badge": "05 IT ACT TRAP",
+          "headline_white": "Section 43A IT Act",
+          "headline_accent": "Unlimited Damages Compensation",
+          "widget_type": "JAIL_TRAP",
+          "widget_data": {
+            "card_title": "Legal Compensation Claim",
+            "badge_text": "FINANCIAL RUIN",
+            "big_number": "No Cap",
+            "items": [
+              "Negligence in maintaining reasonable security",
+              "Mandatory customer damages compensation",
+              "Bank nodal officer compliance summons"
+            ]
+          },
+          "caption_hinglish": "Customer data leak hone par *unlimited damages* claim ho sakte hain."
+        },
+        {
+          "scene_id": 6,
+          "duration_sec": 6,
+          "pill_badge": "06 COMPARISON",
+          "headline_white": "Standard Shared Hosting",
+          "headline_accent": "VS Monk Hardened Defense",
+          "widget_type": "TOGGLE_COMPARISON",
+          "widget_data": {
+            "card_title": "Hosting Infrastructure",
+            "badge_text": "PRO COMPARISON",
+            "big_number": "99.99% Safe",
+            "items": [
+              "Left: Shared IP bad neighborhood flags",
+              "Right: Isolated containerized architecture",
+              "Right: Cloudflare Enterprise WAF enabled"
+            ]
+          },
+          "caption_hinglish": "*Monk Hardened Defense* aapki site ko unhackable container mein rakhta hai."
+        },
+        {
+          "scene_id": 7,
+          "duration_sec": 5,
+          "pill_badge": "07 AUDIT PROTOCOL",
+          "headline_white": "Essential Security Checklist",
+          "headline_accent": "Is Your Site Armed?",
+          "widget_type": "CHECKLIST_CARD",
+          "widget_data": {
+            "card_title": "Security Hygiene Checklist",
+            "badge_text": "MONK AUDIT",
+            "big_number": "4 Core Layers",
+            "items": [
+              "Two-Factor Authentication for CMS admin",
+              "Weekly encrypted offsite backups",
+              "DDoS mitigation & rate limiting active",
+              "Strict Content Security Policy (CSP)"
+            ]
+          },
+          "caption_hinglish": "Aapke paas yeh *4 fundamental layers* maujood hain ya nahi?"
+        },
+        {
+          "scene_id": 8,
+          "duration_sec": 5,
+          "pill_badge": "08 GATEWAY BAN",
+          "headline_white": "Payment Gateway Freeze",
+          "headline_accent": "Cashflow Stops Dead",
+          "widget_type": "FLOWCHART_ALERT",
+          "widget_data": {
+            "card_title": "Financial Lockdown",
+            "badge_text": "PAYMENT HALT",
+            "big_number": "180 Days Hold",
+            "items": [
+              "Card network raises chargeback dispute",
+              "Payment gateway freezes settlement balance",
+              "Merchant placed on MATCH blacklist list",
+              "Online business operations frozen"
+            ]
+          },
+          "caption_hinglish": "Payment gateway block hua toh pura *business cashflow* ek din mein band."
+        },
+        {
+          "scene_id": 9,
+          "duration_sec": 5,
+          "pill_badge": "09 TIME WINDOW",
+          "headline_white": "6-Hour Reporting Rule",
+          "headline_accent": "CERT-In Cyber Mandate",
+          "widget_type": "TIMELINE_DEADLINE",
+          "widget_data": {
+            "card_title": "Reporting Requirement",
+            "badge_text": "URGENT COMPLIANCE",
+            "big_number": "6 Hours",
+            "items": [
+              "Incident detection to CERT-In alert window",
+              "Failure leads to criminal prosecution",
+              "Monk automated monitoring detects in seconds"
+            ]
+          },
+          "caption_hinglish": "Cyber attack ko *6 ghante* ke andar report na karna criminal offence hai."
+        },
+        {
+          "scene_id": 10,
+          "duration_sec": 6,
+          "pill_badge": "10 TAKE ACTION",
+          "headline_white": "Comment 'RULES' Now",
+          "headline_accent": "Get Free Monk Security Guide",
+          "widget_type": "CTA_SHARE_DM_BRAND",
+          "widget_data": {
+            "card_title": "Get Monk Protection",
+            "badge_text": "FREE DM",
+            "big_number": "RULES",
+            "items": [
+              "aapki-website.in",
+              "+91 98765 43210",
+              "WHERE DESIGN MEETS PERFORMANCE"
+            ]
+          },
+          "caption_hinglish": "Abhi comment karein *RULES* aur Monk se free security checklist paayein!"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "p_1794623832776_gvre",
+      "category_name": "Website Security & Legal Compliance",
+      "subcategory_name": "Website Security & Legal Compliance",
+      "version_tag": "v1",
+      "hook_title": "DPDP Act Notice: ₹250 Cr Fine on Indian Websites",
+      "risk_angle": "Business Growth & Security Risk",
+      "enable_comment_cta": true,
+      "comment_keyword": "RULES",
+      "selected_template": "Template 1: Rinisha Dark Crimson",
+      "director_script": "क्या आपकी वेबसाइट पर... एक साधारण 'कॉन्टैक्ट फॉर्म' है? — सावधान हो जाइए। भारत सरकार का नया DPDP Act लागू हो चुका है... और अगर आपकी वेबसाइट यूजर का डेटा बिना वैलिड कंसेंट कलेक्ट कर रही है... तो जुर्माना ₹250 करोड़ तक हो सकता है! भारत के 84% बिज़नेस ओनर्स को लगता है कि सिर्फ एक फ्री SSL सर्टिफिकेट लगा लेने से उनकी साइट सिक्योर हो गई... यह बहुत बड़ा भ्रम है। जब डेटा लीक होता है... या कंप्लायंस नोटिस घर आता है... तब बैंक अकाउंट्स सीज़ हो जाते हैं और ब्रांड की क्रेडिबिलिटी रातों-रात खत्म! मोंक आपके बिज़नेस को देता है बुलेटप्रूफ लीगल और सिक्योरिटी प्रोटेक्शन। अभी नीचे 'RULES' कमेंट करें... और अपनी वेबसाइट का फ्री कंप्लायंस ऑडिट पाएं।",
+      "scenes": [
+        {
+          "scene_id": 1,
+          "duration_sec": 5,
+          "pill_badge": "01 LEGAL ALERT",
+          "headline_white": "Govt DPDP Act 2024",
+          "headline_accent": "Penalty up to ₹250 Cr!",
+          "widget_type": "ALARM_SHOCK",
+          "widget_data": {
+            "card_title": "Legal Notice Warning",
+            "badge_text": "CRITICAL RISK",
+            "big_number": "₹250 Cr",
+            "items": [
+              "Data Protection Board Alert",
+              "Non-compliance fine active",
+              "MSME websites under radar"
+            ]
+          },
+          "caption_hinglish": "Indian business websites par *₹250 Crore* tak ka fine lag sakta hai."
+        },
+        {
+          "scene_id": 2,
+          "duration_sec": 6,
+          "pill_badge": "02 MARKET AUDIT",
+          "headline_white": "84% Indian Sites",
+          "headline_accent": "Directly Violating Norms",
+          "widget_type": "BIG_STAT_COUNTER",
+          "widget_data": {
+            "card_title": "Indian Business Benchmark",
+            "badge_text": "RISK METRIC",
+            "big_number": "84%",
+            "items": [
+              "Missing dynamic consent banners",
+              "Unencrypted lead capture databases",
+              "Zero legal audit logs maintained"
+            ]
+          },
+          "caption_hinglish": "*84%* Indian business sites abhi illegal data collection kar rahi hain."
+        },
+        {
+          "scene_id": 3,
+          "duration_sec": 6,
+          "pill_badge": "03 DATA LEAK",
+          "headline_white": "Your Contact Form",
+          "headline_accent": "Is A Legal Trapdoor",
+          "widget_type": "BROWSER_FORM_SCAN",
+          "widget_data": {
+            "card_title": "Form Field Vulnerability",
+            "badge_text": "DATA LEAK",
+            "big_number": "4 Unsafe Fields",
+            "items": [
+              "Phone & Email saved in plain text",
+              "No clear opt-in consent checkbox",
+              "Third-party tracking scripts running"
+            ]
+          },
+          "caption_hinglish": "Aapka normal *contact form* customer data bina permission store kar raha hai."
+        },
+        {
+          "scene_id": 4,
+          "duration_sec": 6,
+          "pill_badge": "04 LIABILITY",
+          "headline_white": "Promoter Liability",
+          "headline_accent": "Direct Personal Penalties",
+          "widget_type": "JAIL_TRAP",
+          "widget_data": {
+            "card_title": "Director Responsibility",
+            "badge_text": "LEGAL CLAUSE",
+            "big_number": "Section 33",
+            "items": [
+              "Adjudicating inquiry summons",
+              "Frozen business payment gateways",
+              "Loss of corporate reputation"
+            ]
+          },
+          "caption_hinglish": "Legal breach hone par company *directors* personally accountable hote hain."
+        },
+        {
+          "scene_id": 5,
+          "duration_sec": 5,
+          "pill_badge": "05 SSL MYTH",
+          "headline_white": "Free Green Padlock",
+          "headline_accent": "Does NOT Equal Safe",
+          "widget_type": "BROWSER_SECURITY_LOCK",
+          "widget_data": {
+            "card_title": "Encryption Reality",
+            "badge_text": "FALSE SECURITY",
+            "big_number": "Level 1 Only",
+            "items": [
+              "Transport encryption is basic",
+              "Database level encryption absent",
+              "Zero protection against SQL injection"
+            ]
+          },
+          "caption_hinglish": "Sirf green padlock ka matlab *complete security* nahi hota."
+        },
+        {
+          "scene_id": 6,
+          "duration_sec": 6,
+          "pill_badge": "06 MISSING DOCS",
+          "headline_white": "3 Mandatory Pages",
+          "headline_accent": "Missing From Your Footer",
+          "widget_type": "CHECKLIST_CARD",
+          "widget_data": {
+            "card_title": "Mandatory Legal Stack",
+            "badge_text": "COMPLIANCE",
+            "big_number": "3 Missing",
+            "items": [
+              "DPDP Aligned Privacy Policy",
+              "Grievance Officer Designation",
+              "Granular Cookie Preference Center"
+            ]
+          },
+          "caption_hinglish": "Yeh *3 documents* aapki website par hona kanoon ke hisaab se anivarya hai."
+        },
+        {
+          "scene_id": 7,
+          "duration_sec": 6,
+          "pill_badge": "07 ARCHITECTURE",
+          "headline_white": "Cheap Freelance Dev",
+          "headline_accent": "VS Monk Fortified Shield",
+          "widget_type": "TOGGLE_COMPARISON",
+          "widget_data": {
+            "card_title": "Architecture Comparison",
+            "badge_text": "SECURITY UPGRADE",
+            "big_number": "100% Defense",
+            "items": [
+              "Left: Outdated plugins & open DB ports",
+              "Right: Monk AES-256 encrypted endpoints",
+              "Right: Automated consent audit trail"
+            ]
+          },
+          "caption_hinglish": "*Monk Architecture* aapke brand ko har cyber aur legal risk se bachata hai."
+        },
+        {
+          "scene_id": 8,
+          "duration_sec": 5,
+          "pill_badge": "08 COLLAPSE",
+          "headline_white": "Cascade Effect",
+          "headline_accent": "How A Fine Kills Growth",
+          "widget_type": "FLOWCHART_ALERT",
+          "widget_data": {
+            "card_title": "Business Ruin Path",
+            "badge_text": "DOMINO EFFECT",
+            "big_number": "4 Steps Down",
+            "items": [
+              "Data breach triggers regulatory audit",
+              "Payment processors suspend merchant account",
+              "Customers file consumer court complaints",
+              "Annual revenue wiped out in legal defense"
+            ]
+          },
+          "caption_hinglish": "Ek single breach aapke saare *bank accounts* aur ads freeze kar sakta hai."
+        },
+        {
+          "scene_id": 9,
+          "duration_sec": 5,
+          "pill_badge": "09 DEADLINE",
+          "headline_white": "Audits Have Begun",
+          "headline_accent": "Zero Grace Period Left",
+          "widget_type": "TIMELINE_DEADLINE",
+          "widget_data": {
+            "card_title": "Enforcement Clock",
+            "badge_text": "DEADLINE",
+            "big_number": "30 Days",
+            "items": [
+              "DPDPA enforcement board ready",
+              "Notice dispatch mechanism active",
+              "Immediate compliance required"
+            ]
+          },
+          "caption_hinglish": "Grace period khatam... ab *enforcement* shuru ho chuki hai."
+        },
+        {
+          "scene_id": 10,
+          "duration_sec": 6,
+          "pill_badge": "10 SECURE PROTOCOL",
+          "headline_white": "The 4-Step Shield",
+          "headline_accent": "Zero Fine Guarantee",
+          "widget_type": "NUMBERED_GRID_INTRO",
+          "widget_data": {
+            "card_title": "Monk Security Protocol",
+            "badge_text": "ENTERPRISE GRADE",
+            "big_number": "Step 1 to 4",
+            "items": [
+              "Complete dynamic consent module",
+              "Grievance officer routing desk",
+              "Automated data purge workflows",
+              "Real-time penetration test badge"
+            ]
+          },
+          "caption_hinglish": "Monk ka *4-Step Shield* ensure karta hai complete business immunity."
+        },
+        {
+          "scene_id": 11,
+          "duration_sec": 6,
+          "pill_badge": "11 TAKE ACTION",
+          "headline_white": "Comment 'RULES' Below",
+          "headline_accent": "Monk Free Compliance Kit",
+          "widget_type": "CTA_SHARE_DM_BRAND",
+          "widget_data": {
+            "card_title": "Claim Legal Checklist",
+            "badge_text": "FREE DM",
+            "big_number": "RULES",
+            "items": [
+              "aapki-website.in",
+              "+91 98765 43210",
+              "WHERE DESIGN MEETS PERFORMANCE"
+            ]
+          },
+          "caption_hinglish": "Comment karein *RULES* aur payein Monk Security Toolkit instantly!"
+        }
+      ],
+      "status": "draft"
+    }
+  ],
   "rendered_videos": []
 }

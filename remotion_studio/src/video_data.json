@@ -1,0 +1,45 @@
+{
+  "prompt_id": "demo_init",
+  "hook_title": "DPDP Act Compliance",
+  "brand": {
+    "company_name": "RINISHA",
+    "slogan": "WHERE DESIGN MEETS PERFORMANCE",
+    "website_url": "aapki-website.in",
+    "contact_info": "+91 98765 43210"
+  },
+  "theme": {
+    "id": "crimson_dark",
+    "bg": "#16161a",
+    "card_bg": "#212127",
+    "card_border": "#32323c",
+    "accent": "#ff3b4e",
+    "accent_soft": "rgba(255, 59, 78, 0.18)",
+    "text_primary": "#ffffff",
+    "text_muted": "#9ca3af"
+  },
+  "enable_comment_cta": true,
+  "comment_keyword": "RULES",
+  "has_audio": false,
+  "audio_duration_sec": 10,
+  "scenes": [
+    {
+      "scene_id": 1,
+      "duration_sec": 5,
+      "pill_badge": "",
+      "headline_white": "Kya aapko jail ho sakti hai?",
+      "headline_accent": "Sirf website ki ek galti se?",
+      "widget_type": "JAIL_TRAP",
+      "widget_data": {
+        "card_title": "aapki-website.in",
+        "badge_text": "GALTI",
+        "big_number": "",
+        "items": [
+          "Contact Form Active",
+          "Tracking Pixel On",
+          "No Consent Banner"
+        ]
+      },
+      "caption_hinglish": "Kya aapko *jail* ho sakti hai?"
+    }
+  ]
+}

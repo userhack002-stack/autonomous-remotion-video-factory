@@ -27,6 +27,41 @@
       "description": "3-second mobile load speed, checkout drop-offs, scalable architecture, UI/UX trust",
       "source": "manual",
       "status": "approved"
+    },
+    {
+      "id": "cat_ah7n5o",
+      "name": "Omnichannel Conversational AI & WhatsApp Commerce",
+      "description": "Deploy intelligent chatbots and automated sales funnels on WhatsApp and regional messaging apps to drive high-intent Indian consumer engagement and instant conversions.",
+      "source": "ai",
+      "status": "draft"
+    },
+    {
+      "id": "cat_a37w7k",
+      "name": "Hyper-Localized Performance Marketing & D2C Scaling",
+      "description": "Data-driven paid media campaigns tailored for diverse Indian demographics, combining regional content creation with high-ROAS algorithmic bidding on Meta and Google.",
+      "source": "ai",
+      "status": "draft"
+    },
+    {
+      "id": "cat_5zpua9",
+      "name": "Cloud Infrastructure Optimization & DevOps Security",
+      "description": "Scalable AWS/Azure cloud architecture design coupled with rigorous cybersecurity audits tailored for fast-growing Indian tech startups and enterprise digital transformations.",
+      "source": "ai",
+      "status": "draft"
+    },
+    {
+      "id": "cat_bv9jz5",
+      "name": "Vernacular UI/UX & Regional Accessibility Design",
+      "description": "User experience design specifically crafted for the 'Next Billion' Indian users, featuring intuitive interfaces in multiple regional languages and low-bandwidth optimizations.",
+      "source": "ai",
+      "status": "draft"
+    },
+    {
+      "id": "cat_xx0rrl",
+      "name": "B2B SaaS RevOps & Automated Sales Pipelines",
+      "description": "End-to-end revenue operations setup integrating CRM architecture, lead scoring algorithms, and automated email/LinkedIn outreach to accelerate sales cycles for Indian B2B firms.",
+      "source": "ai",
+      "status": "draft"
     }
   ],
   "subcategories": [

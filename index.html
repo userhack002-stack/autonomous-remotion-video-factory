@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Autonomous AI Video Factory v2.0 (Gemini 3.8)</title>
+  <title>Autonomous AI Video Factory v3.0 — Cloud Control</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { background-color: #0d0e12; color: #f3f4f6; font-family: Inter, system-ui, sans-serif; }
@@ -20,12 +20,12 @@
       <div>
         <div class="flex items-center gap-3">
           <h1 class="text-2xl font-black tracking-tight"><span class="text-[#ff3b4e]">&gt;</span> Autonomous Remotion + 'Charon' Factory</h1>
-          <span class="px-2.5 py-1 rounded-full bg-emerald-900/60 border border-emerald-500 text-emerald-300 text-xs font-bold">v2.0 • Gemini 3.8 Active</span>
+          <span class="px-2.5 py-1 rounded-full bg-emerald-900/60 border border-emerald-500 text-emerald-300 text-xs font-bold">v3.0 • Verified Cloud Actions</span>
         </div>
-        <p class="text-sm text-gray-400 mt-1">100% Serverless GitHub Cloud Pipeline • Direct MP4 Releases & Live Preview</p>
+        <p class="text-sm text-gray-400 mt-1">100% Serverless GitHub Cloud Pipeline • Live Actions Monitor & Direct MP4 Releases</p>
       </div>
       <div class="flex gap-3">
-        <button onclick="syncFromGitHub()" class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-sm font-semibold">🔄 Refresh Database & Releases</button>
+        <button onclick="syncFromGitHub()" class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-sm font-semibold">🔄 Refresh Status & Releases</button>
         <button onclick="saveDatabaseToGitHub('Manual save from dashboard')" class="px-4 py-2 rounded-lg accent-btn text-sm">💾 Save Changes to GitHub</button>
       </div>
     </div>
@@ -75,10 +75,10 @@
       <button onclick="showTab('tab_cats')" class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 font-bold text-sm">1️⃣ Categories (Manual + AI Drafts)</button>
       <button onclick="showTab('tab_subs')" class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 font-bold text-sm">2️⃣ Sub-Categories & Multi-Prompt Architect</button>
       <button onclick="showTab('tab_prompts')" class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 font-bold text-sm">3️⃣ Review Prompts & Send to Production</button>
-      <button onclick="showTab('tab_releases')" class="px-4 py-2 rounded-lg bg-[#ff3b4e] text-white font-bold text-sm">4️⃣ Rendered Videos (GitHub Releases & Live Player)</button>
+      <button onclick="showTab('tab_releases')" class="px-4 py-2 rounded-lg bg-[#ff3b4e] text-white font-bold text-sm">4️⃣ Live Render Jobs & Completed Videos</button>
     </div>
 
-    <div id="status_banner" class="hidden p-4 rounded-xl bg-blue-950 border border-blue-600 text-blue-200 text-sm font-semibold"></div>
+    <div id="status_banner" class="hidden p-4 rounded-xl bg-blue-950 border border-blue-600 text-blue-200 text-sm font-semibold whitespace-pre-wrap"></div>
 
     <div id="tab_cats" class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div class="card p-5 space-y-4">
@@ -96,7 +96,7 @@
           <h2 class="text-lg font-bold">🤖 AI Category Thinker (Auto-Drafts)</h2>
           <button onclick="aiDraftNewCategories()" class="px-4 py-2 rounded-lg bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm">✨ AI Think 5 Categories</button>
         </div>
-        <p class="text-xs text-gray-400">Powered by <b>gemini-3.8-flash</b> & <b>gemini-3.5-flash-lite</b>. Approve or Delete below:</p>
+        <p class="text-xs text-gray-400">Powered by <b>gemini-3.5-flash-lite</b> & <b>gemini-3.8-flash</b>. Approve or Delete below:</p>
         <div id="draft_cats_list" class="space-y-3"></div>
       </div>
     </div>
@@ -149,17 +149,33 @@
 
     <div id="tab_prompts" class="hidden space-y-4">
       <div class="card p-4 flex flex-wrap justify-between items-center gap-4">
-        <div class="text-sm text-gray-300">Read generated prompts below, edit scripts/scenes if needed, choose a Visual Template, and click <b>Send Selected to Cloud Render</b>.</div>
+        <div class="text-sm text-gray-300">Check the box next to any prompt(s) below, select a Template, and click <b>Send Checked Prompts to Cloud Render</b>.</div>
         <button onclick="triggerSelectedRenders()" class="px-5 py-2.5 rounded-xl accent-btn text-sm">🎬 Send Checked Prompts to Cloud Render (GitHub Actions)</button>
       </div>
       <div id="prompts_list" class="space-y-4"></div>
     </div>
 
-    <div id="tab_releases" class="hidden space-y-4">
+    <div id="tab_releases" class="hidden space-y-6">
+      <!-- Live GitHub Actions Job Monitor -->
+      <div class="card p-5 space-y-3">
+        <div class="flex justify-between items-center">
+          <div>
+            <h2 class="text-lg font-bold text-amber-400">⚡ Live GitHub Actions Cloud Render Jobs</h2>
+            <p class="text-xs text-gray-400">Real-time status of your cloud rendering jobs (takes ~2-3 minutes per video).</p>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="syncFromGitHub()" class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-xs font-bold">🔄 Refresh Job Status</button>
+            <a id="repo_actions_link" href="#" target="_blank" class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-xs font-bold">🔗 Open GitHub Actions ↗</a>
+          </div>
+        </div>
+        <div id="actions_runs_list" class="space-y-2"></div>
+      </div>
+
+      <!-- Completed Videos from Releases -->
       <div class="card p-5 flex justify-between items-center">
         <div>
-          <h2 class="text-xl font-bold">🎥 Completed Videos (Direct from GitHub Releases)</h2>
-          <p class="text-xs text-gray-400">Every rendered video is automatically published to your repo's GitHub Releases and playable right here.</p>
+          <h2 class="text-xl font-bold text-emerald-400">🎥 Completed Videos (Direct from GitHub Releases)</h2>
+          <p class="text-xs text-gray-400">Every rendered MP4 + WAV is automatically published to GitHub Releases and playable below.</p>
         </div>
         <a id="repo_releases_link" href="#" target="_blank" class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-sm font-bold">🔗 Open GitHub Releases Page ↗</a>
       </div>
@@ -174,7 +190,7 @@ let DB_SHA = null;
 
 function setStatus(msg, isError = false) {
   const el = document.getElementById('status_banner');
-  el.className = `p-4 rounded-xl text-sm font-semibold ${isError ? 'bg-red-950 border border-red-600 text-red-200' : 'bg-blue-950 border border-blue-600 text-blue-200'}`;
+  el.className = `p-4 rounded-xl text-sm font-semibold whitespace-pre-wrap ${isError ? 'bg-red-950 border border-red-600 text-red-200' : 'bg-blue-950 border border-blue-600 text-blue-200'}`;
   el.innerText = msg;
   el.classList.remove('hidden');
 }
@@ -215,7 +231,7 @@ async function syncFromGitHub() {
   const token = document.getElementById('cfg_gh_token').value.trim();
   if (!repo) return setStatus('Please enter your GitHub Repo (username/repo) in Settings above.', true);
 
-  setStatus('Syncing database.json & GitHub Releases...');
+  setStatus('Syncing database.json, Live Actions Runs & GitHub Releases...');
   const headers = token ? { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github+json' } : { 'Accept': 'application/vnd.github+json' };
 
   try {
@@ -227,14 +243,21 @@ async function syncFromGitHub() {
     const decoded = new TextDecoder().decode(Uint8Array.from(atob(rawB64), c => c.charCodeAt(0)));
     DB = JSON.parse(decoded);
 
-    const relRes = await fetch(`https://api.github.com/repos/${repo}/releases?per_page=20`, { headers });
-    if (relRes.ok) {
-      window.LIVE_RELEASES = await relRes.json();
+    const [relRes, runsRes] = await Promise.all([
+      fetch(`https://api.github.com/repos/${repo}/releases?per_page=20&t=${Date.now()}`, { headers }),
+      fetch(`https://api.github.com/repos/${repo}/actions/runs?per_page=10&t=${Date.now()}`, { headers })
+    ]);
+
+    if (relRes.ok) window.LIVE_RELEASES = await relRes.json();
+    if (runsRes.ok) {
+      const runsData = await runsRes.json();
+      window.LIVE_ACTION_RUNS = runsData.workflow_runs || [];
     }
 
     document.getElementById('repo_releases_link').href = `https://github.com/${repo}/releases`;
+    document.getElementById('repo_actions_link').href = `https://github.com/${repo}/actions`;
     populateUI();
-    setStatus('✅ Synced latest database & rendered releases from GitHub!');
+    setStatus('✅ Synced database, Live Action Jobs & Releases from GitHub!');
   } catch (e) {
     setStatus('Error syncing from GitHub: ' + e.message, true);
   }
@@ -245,7 +268,19 @@ async function saveDatabaseToGitHub(commitMsg) {
   const token = document.getElementById('cfg_gh_token').value.trim();
   if (!repo || !token) return setStatus('GitHub Repo & PAT Token required to save changes!', true);
 
-  setStatus('Saving to GitHub repository...');
+  const headers = {
+    'Authorization': `Bearer ${token}`,
+    'Accept': 'application/vnd.github+json',
+    'Content-Type': 'application/json'
+  };
+
+  // Always fetch latest SHA first so we never get a 409 conflict
+  const latestRes = await fetch(`https://api.github.com/repos/${repo}/contents/data/database.json?t=${Date.now()}`, { headers });
+  if (latestRes.ok) {
+    const latestData = await latestRes.json();
+    DB_SHA = latestData.sha;
+  }
+
   const bytes = new TextEncoder().encode(JSON.stringify(DB, null, 2));
   let bin = '';
   bytes.forEach(b => bin += String.fromCharCode(b));
@@ -253,20 +288,18 @@ async function saveDatabaseToGitHub(commitMsg) {
 
   const res = await fetch(`https://api.github.com/repos/${repo}/contents/data/database.json`, {
     method: 'PUT',
-    headers: {
-      'Authorization': `Bearer ${token}`,
-      'Accept': 'application/vnd.github+json',
-      'Content-Type': 'application/json'
-    },
+    headers,
     body: JSON.stringify({ message: commitMsg, content: b64, sha: DB_SHA })
   });
   if (res.ok) {
     const out = await res.json();
     DB_SHA = out.content.sha;
     populateUI();
-    setStatus('✅ Saved to GitHub: ' + commitMsg);
+    return true;
   } else {
-    setStatus('❌ Failed to save to GitHub. Check your PAT Token permissions.', true);
+    const errText = await res.text();
+    setStatus('❌ Failed to save to GitHub: ' + errText, true);
+    return false;
   }
 }
 
@@ -314,7 +347,7 @@ function populateUI() {
 
   renderSubcategoryDropdown();
   renderPromptsList();
-  renderReleasesGrid();
+  renderActionsAndReleases();
 }
 
 function renderSubcategoryDropdown() {
@@ -352,16 +385,25 @@ function deleteCategory(idx) {
   saveDatabaseToGitHub('Delete category');
 }
 
-// ============================================================================
-// UPDATED GEMINI 3.8 FLASH ENGINE (NO LEGACY 2.0 / 2.5 CALLS)
-// ============================================================================
+function extractCleanJSON(raw) {
+  let s = (raw || '').trim();
+  s = s.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/, '').trim();
+  const firstArr = s.indexOf('[');
+  const lastArr = s.lastIndexOf(']');
+  if (firstArr !== -1 && lastArr > firstArr) {
+    try { return JSON.parse(s.slice(firstArr, lastArr + 1)); } catch (e) {}
+  }
+  return JSON.parse(s);
+}
+
 async function callGeminiJSON(promptText) {
   const key = document.getElementById('cfg_gemini_key').value.trim();
   if (!key) throw new Error('Please enter your GEMINI_API_KEY in Settings above!');
 
+  // Fastest non-hanging model first!
   const candidateModels = [
-    'gemini-3.8-flash',
     'gemini-3.5-flash-lite',
+    'gemini-3.8-flash',
     'gemini-3.1-pro-preview'
   ];
 
@@ -369,11 +411,14 @@ async function callGeminiJSON(promptText) {
 
   for (const model of candidateModels) {
     try {
-      setStatus(`⚡ Generating with ${model} (takes ~3-6 seconds)...`);
+      setStatus(`⚡ Generating with ${model}...`);
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 35000);
 
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
+      const res = await fetch(`[https://generativelanguage.googleapis.com/v1beta/models/$](https://generativelanguage.googleapis.com/v1beta/models/$){model}:generateContent?key=${key}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        signal: controller.signal,
         body: JSON.stringify({
           contents: [{ parts: [{ text: promptText }] }],
           generationConfig: {
@@ -382,33 +427,28 @@ async function callGeminiJSON(promptText) {
           }
         })
       });
+      clearTimeout(timer);
 
       const data = await res.json();
-
       if (!res.ok) {
-        const msg = data.error?.message || `HTTP ${res.status}`;
-        errorLog.push(`[${model}]: ${msg}`);
+        errorLog.push(`[${model}]: ${data.error?.message || res.status}`);
         continue;
       }
 
       const parts = data.candidates?.[0]?.content?.parts || [];
       const textPart = parts.find(p => p.text && !p.thought) || parts[parts.length - 1];
-      let rawText = textPart?.text || '[]';
-
-      rawText = rawText.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/, '').trim();
-      const parsed = JSON.parse(rawText);
+      const parsed = extractCleanJSON(textPart?.text || '[]');
 
       if (Array.isArray(parsed)) return parsed;
       const firstArray = Object.values(parsed).find(v => Array.isArray(v));
       if (firstArray) return firstArray;
       return [parsed];
-
     } catch (err) {
-      errorLog.push(`[${model}]: ${err.message}`);
+      errorLog.push(`[${model}]: ${err.name === 'AbortError' ? 'Timed out (35s)' : err.message}`);
     }
   }
 
-  throw new Error('Gemini 3.x Error -> ' + errorLog.join(' | '));
+  throw new Error('Gemini Error -> ' + errorLog.join(' | '));
 }
 
 async function aiDraftNewCategories() {
@@ -432,8 +472,8 @@ Return ONLY a valid JSON array of 5 objects with keys "name" and "description".`
         });
       }
     });
-    populateUI();
     await saveDatabaseToGitHub('AI drafted ' + drafts.length + ' new categories');
+    setStatus('✅ Drafted 5 new categories!');
   } catch (e) {
     setStatus('❌ ' + e.message, true);
   }
@@ -445,7 +485,7 @@ async function aiGenerateSubcategories() {
   if (!cat) return;
   try {
     const prompt = `Main Category: ${cat.name} (${cat.description}). Target Market: India.
-Generate 6 specific Sub-Categories. Vary the pain point across sub-categories (do NOT only use legal fine; include customer drop-off, data theft, Google ranking drop, festival server crash, competitor lead loss, etc.).
+Generate 6 specific Sub-Categories. Vary the pain point across sub-categories (customer drop-off, data theft, Google ranking drop, festival server crash, legal notice, competitor lead loss).
 Return ONLY a JSON array of objects with keys: "name", "india_hook_stat", "risk_type".`;
     const subs = await callGeminiJSON(prompt);
     subs.forEach(s => {
@@ -459,8 +499,8 @@ Return ONLY a JSON array of objects with keys: "name", "india_hook_stat", "risk_
         });
       }
     });
-    populateUI();
     await saveDatabaseToGitHub(`Generated sub-categories for ${cat.name}`);
+    setStatus('✅ Sub-categories generated!');
   } catch (e) {
     setStatus('❌ ' + e.message, true);
   }
@@ -526,8 +566,8 @@ Return ONLY a JSON array of ${count} objects with keys:
         });
       }
     });
-    populateUI();
     await saveDatabaseToGitHub(`Generated ${generated.length} video prompts (${version})`);
+    setStatus(`✅ Generated ${generated.length} prompts!`);
     showTab('tab_prompts');
   } catch (e) {
     setStatus('❌ ' + e.message, true);
@@ -554,17 +594,18 @@ function renderPromptsList() {
               <option ${p.selected_template.includes('Template 2') ? 'selected' : ''}>Template 2: Cyber Matrix Emerald</option>
               <option ${p.selected_template.includes('Template 3') ? 'selected' : ''}>Template 3: Executive FinTech Gold</option>
             </select>
+            <button onclick="triggerSinglePrompt('${p.id}')" class="px-3 py-1.5 rounded accent-btn text-xs">▶️ Render Now</button>
             <button onclick="deletePrompt(${idx})" class="px-3 py-1 rounded bg-red-950 text-red-300 text-xs">🗑️ Delete</button>
           </div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="text-xs text-gray-400">🎙️ Hindi Voiceover Script (Gemini 'Charon' Deep Voice)</label>
-            <textarea id="scr_${idx}" onchange="updatePromptField(${idx})" rows="6" class="w-full mt-1 text-xs">${p.director_script}</textarea>
+            <textarea id="scr_${idx}" onchange="updatePromptField(${idx})" rows="5" class="w-full mt-1 text-xs">${p.director_script}</textarea>
           </div>
           <div>
             <label class="text-xs text-gray-400">🎨 12-Scene Remotion Visual Blueprint (JSON)</label>
-            <textarea id="scn_${idx}" onchange="updatePromptField(${idx})" rows="6" class="w-full mt-1 text-xs font-mono">${JSON.stringify(p.scenes, null, 2)}</textarea>
+            <textarea id="scn_${idx}" onchange="updatePromptField(${idx})" rows="5" class="w-full mt-1 text-xs font-mono">${JSON.stringify(p.scenes, null, 2)}</textarea>
           </div>
         </div>
       </div>`;
@@ -584,39 +625,97 @@ function deletePrompt(idx) {
   saveDatabaseToGitHub('Delete prompt');
 }
 
+async function triggerSinglePrompt(pid) {
+  await dispatchRenderJobs([pid]);
+}
+
 async function triggerSelectedRenders() {
   const checked = Array.from(document.querySelectorAll('.prompt_check:checked')).map(c => c.value);
-  if (!checked.length) return setStatus('Please check at least one prompt box to send to video production!', true);
+  if (!checked.length) return setStatus('Please check at least one prompt box (or click Render Now) to send to video production!', true);
+  await dispatchRenderJobs(checked);
+}
 
+// ============================================================================
+// REAL VERIFIED GITHUB ACTIONS DISPATCHER (NO SILENT FAILURES!)
+// ============================================================================
+async function dispatchRenderJobs(promptIds) {
   const repo = document.getElementById('cfg_repo').value.trim();
   const token = document.getElementById('cfg_gh_token').value.trim();
   const geminiKey = document.getElementById('cfg_gemini_key').value.trim();
-  if (!repo || !token) return setStatus('GitHub Repo & PAT Token required!', true);
+  if (!repo || !token) return setStatus('GitHub Repo & PAT Token required in Settings!', true);
 
-  checked.forEach(pid => {
+  setStatus('Saving prompt state & dispatching GitHub Actions workflow...');
+
+  promptIds.forEach(pid => {
     const p = DB.prompts.find(x => x.id === pid);
     if (p) p.status = 'rendering';
   });
-  await saveDatabaseToGitHub(`Queue ${checked.length} prompt(s) for cloud production`);
+  await saveDatabaseToGitHub(`Queue ${promptIds.length} prompt(s) for cloud production`);
 
-  for (const pid of checked) {
-    await fetch(`[https://api.github.com/repos/$](https://api.github.com/repos/$){repo}/actions/workflows/render_and_release.yml/dispatches`, {
+  const headers = {
+    'Authorization': `Bearer ${token}`,
+    'Accept': 'application/vnd.github+json',
+    'Content-Type': 'application/json'
+  };
+
+  let successCount = 0;
+  let errors = [];
+
+  for (const pid of promptIds) {
+    const res = await fetch(`[https://api.github.com/repos/$](https://api.github.com/repos/$){repo}/actions/workflows/render_and_release.yml/dispatches`, {
       method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Accept': 'application/vnd.github+json',
-        'Content-Type': 'application/json'
-      },
+      headers,
       body: JSON.stringify({
         ref: 'main',
-        inputs: { prompt_id: pid, gemini_api_key: geminiKey }
+        inputs: { prompt_id: String(pid), gemini_api_key: geminiKey }
       })
     });
+
+    if (res.status === 204) {
+      successCount++;
+    } else {
+      const errBody = await res.text();
+      errors.push(`Prompt ${pid} (HTTP ${res.status}): ${errBody}`);
+    }
   }
-  setStatus(`🚀 Triggered ${checked.length} Cloud Render job(s) on GitHub Actions! Videos will appear in Tab 4 & GitHub Releases automatically.`);
+
+  if (errors.length > 0) {
+    setStatus(`❌ GitHub Actions Dispatch Failed!
+${errors.join('
+')}
+
+Make sure your GitHub PAT Token has the 'workflow' scope enabled!`, true);
+  } else {
+    setStatus(`🚀 Successfully started ${successCount} Cloud Render job(s) on GitHub Actions! Switching to Tab 4 to monitor live progress...`);
+    showTab('tab_releases');
+    setTimeout(() => syncFromGitHub(), 4000);
+  }
 }
 
-function renderReleasesGrid() {
+function renderActionsAndReleases() {
+  // 1. Render Live GitHub Actions Runs
+  const runsEl = document.getElementById('actions_runs_list');
+  runsEl.innerHTML = '';
+  const runs = window.LIVE_ACTION_RUNS || [];
+  if (!runs.length) {
+    runsEl.innerHTML = `<div class="text-xs text-gray-400">No GitHub Action runs found yet. Click "Render Now" on any prompt in Tab 3!</div>`;
+  } else {
+    runs.slice(0, 6).forEach(r => {
+      const badgeColor = r.conclusion === 'success' ? 'bg-emerald-700' : (r.conclusion === 'failure' ? 'bg-red-700' : 'bg-amber-600 animate-pulse');
+      const statusText = r.status === 'completed' ? (r.conclusion || 'DONE').toUpperCase() : r.status.toUpperCase();
+      runsEl.innerHTML += `
+        <div class="p-3 rounded-lg bg-[#0d0e12] border border-gray-800 flex flex-wrap justify-between items-center gap-2">
+          <div class="flex items-center gap-3">
+            <span class="px-2.5 py-1 rounded text-xs font-bold ${badgeColor}">${statusText}</span>
+            <span class="font-bold text-sm">Run #${r.run_number}: ${r.display_title || r.name}</span>
+            <span class="text-xs text-gray-400">${new Date(r.created_at).toLocaleString()}</span>
+          </div>
+          <a href="${r.html_url}" target="_blank" class="px-3 py-1 rounded bg-gray-800 hover:bg-gray-700 text-xs font-bold">🔍 View Live Logs on GitHub ↗</a>
+        </div>`;
+    });
+  }
+
+  // 2. Render Completed Videos Grid
   const grid = document.getElementById('releases_grid');
   grid.innerHTML = '';
 
@@ -648,7 +747,7 @@ function renderReleasesGrid() {
   }
 
   if (!items.length) {
-    grid.innerHTML = `<div class="text-sm text-gray-400">No rendered releases yet. Trigger a prompt in Tab 3 and click Refresh!</div>`;
+    grid.innerHTML = `<div class="text-sm text-gray-400">No completed video releases yet. Once a live job above turns GREEN (SUCCESS), click Refresh to watch & download your MP4 here!</div>`;
     return;
   }
 

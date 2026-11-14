@@ -21,7 +21,7 @@
       <div>
         <div class="flex items-center gap-3">
           <h1 class="text-2xl font-black tracking-tight"><span class="text-[#ff3b4e]">&gt;</span> Autonomous Remotion + 'Charon' Factory</h1>
-          <span class="px-2.5 py-1 rounded-full bg-emerald-900/60 border border-emerald-500 text-emerald-300 text-xs font-bold">v3.1 • UI & Cloud Active</span>
+          <span class="px-2.5 py-1 rounded-full bg-emerald-900/60 border border-emerald-500 text-emerald-300 text-xs font-bold">v5.0 • Beat-Locked Master Editor</span>
         </div>
         <p class="text-sm text-gray-400 mt-1">100% Serverless GitHub Cloud Pipeline • Live Actions Monitor & Direct MP4 Releases</p>
       </div>
@@ -560,39 +560,65 @@ async function aiGenerateVideoPrompts() {
   const sub = (DB.subcategories || []).find(function(s) { return s.id === subId; });
   if (!cat) return;
 
-  const count = parseInt(document.getElementById('gen_count').value || '2', 10);
+  const count = parseInt(document.getElementById('gen_count').value || '1', 10);
   const version = document.getElementById('gen_version').value;
   const enableCta = document.getElementById('gen_cta_toggle').value === 'yes';
   const ctaWord = document.getElementById('gen_cta_word').value.trim() || (DB.brand && DB.brand.default_comment_word) || 'RULES';
 
   const topicName = sub ? sub.name : cat.name;
-  const hookStat = sub ? sub.india_hook_stat : 'Indian Business Market Benchmark';
-  const riskAngle = sub ? sub.risk_type : 'Business Growth & Security Risk';
+  const hookStat = sub ? sub.india_hook_stat : '₹250 Crore Penalty / 68% Traffic Drop';
+  const riskAngle = sub ? sub.risk_type : 'Massive Financial & Customer Loss';
 
   try {
-    const prompt = 'You are an elite Viral Reel Director & Motion Graphics Architect (inspired by Rinisha / Monk reels). Generate ' + count + ' distinct, complete video production prompts (Version: ' + version + ') for: Category: ' + cat.name + ', Topic: ' + topicName + ', India Stat: ' + hookStat + ', Risk Angle: ' + riskAngle + ', Company Name: ' + DB.brand.company_name + ', Slogan: ' + DB.brand.slogan + ', Website: ' + DB.brand.website_url + ', Contact: ' + DB.brand.contact_info + ', Comment CTA Enabled: ' + (enableCta ? 'YES (Comment ' + ctaWord + ' for free DM guide)' : 'NO (Authority CTA only)') + '. RULES: 1. Spoken "director_script" MUST be in Devanagari Hindi with dramatic "..." and "—" pauses for Gemini Charon deep voice. 2. On-screen text ("headline_white", "headline_accent", "caption_hinglish", "widget_data") MUST be in crisp Hinglish (Roman script). 3. Choose "widget_type" for each scene from: ["JAIL_TRAP", "ALARM_SHOCK", "BIG_STAT_COUNTER", "BROWSER_FORM_SCAN", "MULTI_SITE_WARNING", "TIMELINE_DEADLINE", "NUMBERED_GRID_INTRO", "CHECKLIST_CARD", "TOGGLE_COMPARISON", "BROWSER_SECURITY_LOCK", "FLOWCHART_ALERT", "CTA_SHARE_DM_BRAND"]. Return ONLY a JSON array of ' + count + ' objects with keys: "hook_title", "risk_angle", "director_script", and "scenes" (array of 10 to 12 scene objects with keys: "scene_id", "duration_sec", "pill_badge", "headline_white", "headline_accent", "widget_type", "widget_data": {"card_title", "badge_text", "big_number", "items": []}, "caption_hinglish").';
+    const prompt = 'You are an elite Viral Reel Editor & Hindi Scriptwriter (exact style of Rinisha / Monk reels). ' +
+      'Create ' + count + ' master-level, beat-synced video production prompt(s) (Version: ' + version + ') for: ' +
+      'Category: ' + cat.name + ', Sub-Topic: ' + topicName + ', India Stat: ' + hookStat + ', Risk Angle: ' + riskAngle + ', ' +
+      'Brand: ' + DB.brand.company_name + ' (' + DB.brand.website_url + '). ' +
+      'CRITICAL BEAT-LOCKED ARCHITECTURE (SO AUDIO, VIDEO & CAPTIONS NEVER DRIFT): ' +
+      'Instead of writing a separate script and separate scenes, you MUST build 14 to 16 sequential MICRO-BEATS ("scenes"). ' +
+      'Each beat MUST follow this exact storytelling flow from our reference video: ' +
+      'Beat 1 (JAIL_TRAP): Shocking hook question ("क्या आपको... जेल हो सकती है? सिर्फ़ अपनी वेबसाइट की, एक ग़लती की वजह से?"). ' +
+      'Beat 2 (ALARM_SHOCK): Twist ("जेल? ... शायद नहीं। लेकिन जो हो सकता है... वो सुनकर आपकी नींद उड़ जाएगी!"). ' +
+      'Beat 3 (BIG_STAT_COUNTER): Huge number reveal ("' + hookStat + '!"). ' +
+      'Beat 4 (BROWSER_FORM_SCAN): Agitate daily mistake on their website. ' +
+      'Beat 5 (MULTI_SITE_WARNING): "अक्सर बिज़नेस को पता भी नहीं कि वो ये ग़लती रोज़ कर रहे हैं।" ' +
+      'Beat 6 (TIMELINE_DEADLINE): Authority rule / urgency deadline. ' +
+      'Beat 7 (NUMBERED_GRID_INTRO): "तो अपने बिज़नेस को बचाने के लिए, ये चीज़ें अभी अपनी वेबसाइट पर चेक करो:" ' +
+      'Beats 8 to 13: 6 sharp, actionable rules ("पहला — ...", "दूसरा — ...", "तीसरा — ...", "चौथा — ...", "पाँचवाँ — ...", "छठा — ...") using widget_types: CHECKLIST_CARD, TOGGLE_COMPARISON, BROWSER_SECURITY_LOCK, FLOWCHART_ALERT. ' +
+      'Beat 14 (CTA_SHARE_DM_BRAND): Share hook + ' + (enableCta ? 'Comment "' + ctaWord + '" for free checklist DM + ' : '') + 'subtle brand mention of ' + DB.brand.company_name + '. ' +
+      'FOR EVERY SINGLE BEAT OBJECT IN "scenes", INCLUDE: ' +
+      '- "scene_id": number, ' +
+      '- "spoken_hindi": Exact Devanagari Hindi line spoken in this beat (with "..." and "—" pauses for Charon voice), ' +
+      '- "pill_badge": "" for hook beats, or "01 SPEED AUDIT", "02 SECURITY" for numbered points, ' +
+      '- "headline_white": 2-4 punchy Hinglish words (top white line), ' +
+      '- "headline_accent": 2-4 punchy Hinglish words (bottom red accent line), ' +
+      '- "widget_type": one of ["JAIL_TRAP", "ALARM_SHOCK", "BIG_STAT_COUNTER", "BROWSER_FORM_SCAN", "MULTI_SITE_WARNING", "TIMELINE_DEADLINE", "NUMBERED_GRID_INTRO", "CHECKLIST_CARD", "TOGGLE_COMPARISON", "BROWSER_SECURITY_LOCK", "FLOWCHART_ALERT", "CTA_SHARE_DM_BRAND"], ' +
+      '- "widget_data": {"card_title": "Short Hinglish Title", "badge_text": "GALTI / URGENT / COMPLIANT", "big_number": "₹250", "items": ["Short Point 1", "Short Point 2", "Short Point 3", "Short Point 4"]}, ' +
+      '- "captions": Array of 2 or 3 short Hinglish sub-caption phrases (3-4 words each) that match "spoken_hindi" in exact order, with ONLY ONE key word wrapped in *asterisks* per phrase (e.g. ["Kya aapko *jail*", "ho *sakti* hai...", "sirf ek *galti* se?"]). ' +
+      'Return ONLY a JSON array of ' + count + ' object(s) with keys: "hook_title", "risk_angle", "scenes".';
 
     const generated = await callGeminiJSON(prompt);
     generated.forEach(function(gp) {
-      if (gp && gp.hook_title) {
+      if (gp && gp.scenes && gp.scenes.length) {
+        const fullHindiScript = gp.scenes.map(function(s) { return s.spoken_hindi || ''; }).filter(Boolean).join(NL + NL);
         DB.prompts.unshift({
           id: 'p_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
           category_name: cat.name,
           subcategory_name: topicName,
           version_tag: version,
-          hook_title: gp.hook_title,
+          hook_title: gp.hook_title || topicName,
           risk_angle: gp.risk_angle || riskAngle,
           enable_comment_cta: enableCta,
           comment_keyword: ctaWord,
           selected_template: 'Template 1: Rinisha Dark Crimson',
-          director_script: gp.director_script || '',
-          scenes: gp.scenes || [],
+          director_script: fullHindiScript,
+          scenes: gp.scenes,
           status: 'draft'
         });
       }
     });
-    await saveDatabaseToGitHub('Generated ' + generated.length + ' video prompts (' + version + ')');
-    setStatus('✅ Generated ' + generated.length + ' prompts!');
+    await saveDatabaseToGitHub('Generated ' + generated.length + ' beat-synced v5.0 prompts');
+    setStatus('✅ Generated ' + generated.length + ' Beat-Synced Master Editor Prompts! Review in Tab 3.');
     showTab('tab_prompts');
   } catch (e) {
     setStatus('❌ ' + e.message, true);

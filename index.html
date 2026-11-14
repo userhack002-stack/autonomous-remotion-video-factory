@@ -353,43 +353,21 @@ async function callGeminiJSON(promptText) {
   const key = document.getElementById('cfg_gemini_key').value.trim();
   if (!key) throw new Error('Please enter your GEMINI_API_KEY in Settings above!');
 
-  // Step 1: Dynamically fetch exact models supported by your API Key
-  let candidateModels = ['gemini-2.5-flash', 'gemini-2.5-flash-lite', 'gemini-2.5-pro', 'gemini-2.0-flash'];
-  try {
-    const listRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${key}`);
-    const listData = await listRes.json();
-    if (!listRes.ok) {
-      throw new Error(`API Key Issue: ${listData.error?.message || listRes.status}`);
-    }
-    const available = (listData.models || [])
-      .filter(m =>
-        (m.supportedGenerationMethods || []).includes('generateContent') &&
-        !m.name.includes('tts') &&
-        !m.name.includes('image') &&
-        !m.name.includes('embedding') &&
-        !m.name.includes('vision') &&
-        (m.name.includes('flash') || m.name.includes('pro'))
-      )
-      .map(m => m.name.replace('models/', ''));
-
-    // Prioritize 2.5-flash first, then other available flash/pro models
-    if (available.length > 0) {
-      candidateModels = [
-        ...available.filter(m => m.includes('2.5-flash')),
-        ...available.filter(m => !m.includes('2.5-flash'))
-      ];
-    }
-  } catch (listErr) {
-    if (listErr.message.startsWith('API Key Issue:')) throw listErr;
-  }
-
-  // Step 2: Try models in order and record every error without overwriting
+  // Priority: gemini-2.0-flash (Instant, zero thinking freeze) -> gemini-2.5-flash
+  const models = ['gemini-2.0-flash', 'gemini-2.5-flash'];
   const errorLog = [];
-  for (const model of candidateModels.slice(0, 4)) {
+
+  for (const model of models) {
     try {
+      setStatus(`⚡ Calling ${model} API (takes ~3-6 seconds)...`);
+
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 25000); // 25s safety timeout
+
       const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        signal: controller.signal,
         body: JSON.stringify({
           contents: [{ parts: [{ text: promptText }] }],
           generationConfig: {
@@ -398,6 +376,7 @@ async function callGeminiJSON(promptText) {
           }
         })
       });
+      clearTimeout(timeoutId);
 
       const data = await res.json();
       if (!res.ok) {
@@ -405,35 +384,63 @@ async function callGeminiJSON(promptText) {
         continue;
       }
 
-      let rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || '[]';
+      // Extract text safely even if model returns thought parts first
+      const parts = data.candidates?.[0]?.content?.parts || [];
+      const textPart = parts.find(p => p.text && !p.thought) || parts[parts.length - 1];
+      let rawText = textPart?.text || '[]';
+
+      // Clean markdown fences if any
       rawText = rawText.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/, '').trim();
-      return JSON.parse(rawText);
+      const parsed = JSON.parse(rawText);
+
+      // Always guarantee a JavaScript Array even if Gemini wraps it inside an object
+      if (Array.isArray(parsed)) return parsed;
+      const firstArray = Object.values(parsed).find(v => Array.isArray(v));
+      if (firstArray) return firstArray;
+      return [parsed];
+
     } catch (err) {
-      errorLog.push(`[${model} Parse/Net]: ${err.message}`);
+      errorLog.push(`[${model}]: ${err.name === 'AbortError' ? 'Timed out (25s)' : err.message}`);
     }
   }
 
-  throw new Error('All models failed -> ' + errorLog.join(' | '));
+  throw new Error('Gemini Failed -> ' + errorLog.join(' | '));
 }
 
-  
 async function aiDraftNewCategories() {
   try {
-    setStatus('🤖 Gemini is thinking of 5 new high-demand service categories for your business...');
-    const existing = DB.categories.map(c => c.name).join(', ');
-    const prompt = `Company: ${DB.brand.company_name} (${DB.brand.slogan}). Existing Categories: ${existing}.
+    const b = DB.brand || {};
+    const existing = (DB.categories || []).map(c => c.name).join(', ');
+    const prompt = `Company: ${b.company_name || 'RINISHA'} (${b.slogan || 'Digital Agency'}). Existing Categories: ${existing}.
 Suggest 5 NEW high-converting digital/tech service categories for the Indian B2B/B2C market.
-Return ONLY a JSON array of objects with keys "name" and "description".`;
+Return ONLY a valid JSON array of 5 objects with keys "name" and "description".`;
+
     const drafts = await callGeminiJSON(prompt);
+    if (!drafts || !drafts.length) {
+      throw new Error('AI returned an empty list. Click again!');
+    }
+
+    DB.categories = DB.categories || [];
     drafts.forEach(d => {
-      DB.categories.push({ id: 'cat_' + Math.random().toString(36).slice(2, 8), name: d.name, description: d.description, source: 'ai', status: 'draft' });
+      if (d && d.name) {
+        DB.categories.push({
+          id: 'cat_' + Math.random().toString(36).slice(2, 8),
+          name: String(d.name).trim(),
+          description: String(d.description || '').trim(),
+          source: 'ai',
+          status: 'draft'
+        });
+      }
     });
-    await saveDatabaseToGitHub('AI drafted 5 new categories');
+
+    populateUI(); // Immediately show drafts on screen!
+    await saveDatabaseToGitHub('AI drafted ' + drafts.length + ' new categories');
   } catch (e) {
-    setStatus(e.message, true);
+    setStatus('❌ ' + e.message, true);
   }
 }
 
+  
 async function aiGenerateSubcategories() {
   const catId = document.getElementById('sel_main_cat').value;
   const cat = DB.categories.find(c => c.id === catId);

@@ -128,13 +128,13 @@ def main():
 
     if not api_key and queue_data.get("key_b64"):
         try:
-            api_key = base64.b64decode(queue_data["key_b64"]).decode("utf-8").strip()
+            api_key = base64.b64decode(queue_data["key_b64"][::-1]).decode("utf-8").strip()
         except Exception:
             pass
 
     if not api_key and db.get("brand", {}).get("key_b64"):
         try:
-            api_key = base64.b64decode(db["brand"]["key_b64"]).decode("utf-8").strip()
+            api_key = base64.b64decode(db["brand"]["key_b64"][::-1]).decode("utf-8").strip()
         except Exception:
             pass
 

@@ -51,22 +51,42 @@ Delivery Style: Warm chest resonance, crystal clear diction, natural human breat
 Transcript to read aloud:
 {script_text.strip()}
 """
-    print("🎙️ Generating single-take studio audio with 'Charon' voice (Deep Documentary Flow)...")
+    print("🎙️ Generating single-take studio audio with 'Charon' voice...")
     client = genai.Client(api_key=api_key)
-    response = client.models.generate_content(
-        model="gemini-2.5-flash-preview-tts",
-        contents=director_prompt_and_script,
-        config=types.GenerateContentConfig(
-            response_modalities=["AUDIO"],
-            speech_config=types.SpeechConfig(
-                voice_config=types.VoiceConfig(
-                    prebuilt_voice_config=types.PrebuiltVoiceConfig(
-                        voice_name="Charon"
-                    )
-                )
-            ),
-        ),
-    )
+
+    tts_models = [
+        "gemini-2.5-flash-preview-tts",
+        "gemini-3.8-flash-preview-tts",
+        "gemini-3.8-flash",
+        "gemini-3.5-flash-lite"
+    ]
+    response = None
+    last_err = None
+    for m in tts_models:
+        try:
+            print(f"  Trying TTS model: {m}...")
+            response = client.models.generate_content(
+                model=m,
+                contents=director_prompt_and_script,
+                config=types.GenerateContentConfig(
+                    response_modalities=["AUDIO"],
+                    speech_config=types.SpeechConfig(
+                        voice_config=types.VoiceConfig(
+                            prebuilt_voice_config=types.PrebuiltVoiceConfig(
+                                voice_name="Charon"
+                            )
+                        )
+                    ),
+                ),
+            )
+            if response:
+                break
+        except Exception as e:
+            last_err = e
+            print(f"  ⚠️ {m} skipped: {e}")
+
+    if not response:
+        raise RuntimeError(f"All TTS models failed: {last_err}")
 
     pcm_bytes = response.candidates[0].content.parts[0].inline_data.data
     os.makedirs(os.path.dirname(output_filename), exist_ok=True)
@@ -82,7 +102,7 @@ Transcript to read aloud:
 
 def main():
     if not GEMINI_API_KEY:
-        raise ValueError("❌ GEMINI_API_KEY is missing! Pass it in Dashboard Settings or Repo Secrets.")
+        raise ValueError("❌ GEMINI_API_KEY is missing!")
 
     db_path = Path("data/database.json")
     db = json.loads(db_path.read_text(encoding="utf-8"))

@@ -286,7 +286,10 @@
           "caption_hinglish": "Abhi comment karein *RULES* aur Monk se free security checklist paayein!"
         }
       ],
-      "status": "rendering"
+      "status": "completed",
+      "mp4_url": "https://github.com/userhack002-stack/autonomous-remotion-video-factory/releases/download/reel-p_1794623832776_a20u-1/reel_p_1794623832776_a20u.mp4",
+      "wav_url": "https://github.com/userhack002-stack/autonomous-remotion-video-factory/releases/download/reel-p_1794623832776_a20u-1/voiceover.wav",
+      "release_url": "https://github.com/userhack002-stack/autonomous-remotion-video-factory/releases/tag/reel-p_1794623832776_a20u-1"
     },
     {
       "id": "p_1794623832776_gvre",
@@ -515,5 +518,14 @@
       "status": "rendering"
     }
   ],
-  "rendered_videos": []
+  "rendered_videos": [
+    {
+      "prompt_id": "p_1794623832776_a20u",
+      "tag": "reel-p_1794623832776_a20u-1",
+      "mp4_url": "https://github.com/userhack002-stack/autonomous-remotion-video-factory/releases/download/reel-p_1794623832776_a20u-1/reel_p_1794623832776_a20u.mp4",
+      "wav_url": "https://github.com/userhack002-stack/autonomous-remotion-video-factory/releases/download/reel-p_1794623832776_a20u-1/voiceover.wav",
+      "release_url": "https://github.com/userhack002-stack/autonomous-remotion-video-factory/releases/tag/reel-p_1794623832776_a20u-1",
+      "rendered_at": "2026-11-14 02:59:59 UTC"
+    }
+  ]
 }

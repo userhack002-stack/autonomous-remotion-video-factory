@@ -83,6 +83,342 @@
   ],
   "prompts": [
     {
+      "id": "p_1795300276023_yxpr",
+      "category_name": "Website Security & Legal Compliance",
+      "subcategory_name": "Website Security & Legal Compliance",
+      "version_tag": "v5",
+      "hook_title": "Website Security & Legal Compliance",
+      "risk_angle": "Massive Financial & Customer Loss",
+      "enable_comment_cta": true,
+      "comment_keyword": "RULES",
+      "selected_template": "Template 1: Rinisha Dark Crimson",
+      "director_script": "क्या आपको... जेल हो सकती है? सिर्फ़ अपनी वेबसाइट की, एक ग़लती की वजह से?\n\nजेल? ... शायद नहीं। लेकिन जो हो सकता है... वो सुनकर आपकी नींद उड़ जाएगी!\n\n₹250 Crore Penalty / 68% Traffic Drop!\n\nअक्सर बिज़नेस को पता भी नहीं कि वो ये ग़लती रोज़ कर रहे हैं।\n\nहर दिन हजारों विजिटर्स का डेटा बिना सुरक्षा लीक हो रहा है।\n\nनए डिजिटल कानून के तहत अब कोई छूट नहीं मिलेगी।\n\nतो अपने बिज़नेस को बचाने के लिए, ये चीज़ें अभी अपनी वेबसाइट पर चेक करो:\n\nपहला — SSL Certificate और HTTPS protocol पूरी तरह valid होना चाहिए।\n\nदूसरा — Privacy Policy और Terms page footer में साफ़ दिखने चाहिए।\n\nतीसरा — Cookie Consent Banner हर नए यूजर को दिखना कंपलसरी है।\n\nचौथा — Contact forms में Spam Protection या Captcha लगा होना चाहिए।\n\nपाँचवाँ — Payment Gateway RBI approved और 256-bit encrypted होना चाहिए।\n\nछठा — Website backup हर हफ्ते automatically cloud पर सेव होना चाहिए।\n\nफ्री वेबसाइट ऑडिट के लिए अभी DM में 'RULES' टाइप करें — Monk (aapki-website.in)",
+      "scenes": [
+        {
+          "scene_id": 1,
+          "spoken_hindi": "क्या आपको... जेल हो सकती है? सिर्फ़ अपनी वेबसाइट की, एक ग़लती की वजह से?",
+          "pill_badge": "",
+          "headline_white": "Website ki",
+          "headline_accent": "Badi Galti?",
+          "widget_type": "JAIL_TRAP",
+          "widget_data": {
+            "card_title": "Legal Risk Alert",
+            "badge_text": "URGENT",
+            "big_number": "1",
+            "items": [
+              "Website check",
+              "Legal risk",
+              "Immediate action"
+            ]
+          },
+          "captions": [
+            "Kya aapko *jail*",
+            "ho *sakti* hai...",
+            "sirf ek *galti* se?"
+          ]
+        },
+        {
+          "scene_id": 2,
+          "spoken_hindi": "जेल? ... शायद नहीं। लेकिन जो हो सकता है... वो सुनकर आपकी नींद उड़ जाएगी!",
+          "pill_badge": "",
+          "headline_white": "Neend Ud",
+          "headline_jay": "Jaayegi!",
+          "widget_type": "ALARM_SHOCK",
+          "widget_data": {
+            "card_title": "Financial Shock",
+            "badge_text": "WARNING",
+            "big_number": "0",
+            "items": [
+              "Heavy penalties",
+              "Traffic drop",
+              "Client loss"
+            ]
+          },
+          "captions": [
+            "Jail? *Shayad* nahi.",
+            "Lekin *kya* ho sakta hai...",
+            "neend *ud* jaayegi!"
+          ]
+        },
+        {
+          "scene_id": 3,
+          "spoken_hindi": "₹250 Crore Penalty / 68% Traffic Drop!",
+          "pill_badge": "",
+          "headline_white": "250 Crore",
+          "headline_accent": "Penalty Drop!",
+          "widget_type": "BIG_STAT_COUNTER",
+          "widget_data": {
+            "card_title": "Massive Losses",
+            "badge_text": "CRITICAL",
+            "big_number": "₹250 Cr",
+            "items": [
+              "68% traffic drop",
+              "Huge penalty",
+              "Business down"
+            ]
+          },
+          "captions": [
+            "250 Crore *penalty*",
+            "68% traffic *drop*!"
+          ]
+        },
+        {
+          "scene_id": 4,
+          "spoken_hindi": "अक्सर बिज़नेस को पता भी नहीं कि वो ये ग़लती रोज़ कर रहे हैं।",
+          "pill_badge": "",
+          "headline_white": "Roz Ho",
+          "headline_accent": "Rahi Hai Galti",
+          "widget_type": "BROWSER_FORM_SCAN",
+          "widget_data": {
+            "card_title": "Daily Mistake",
+            "badge_text": "SCAN",
+            "big_number": "4",
+            "items": [
+              "Form tracking",
+              "Cookie error",
+              "No privacy policy"
+            ]
+          },
+          "captions": [
+            "Aksar *business* ko",
+            "pata *bhi* nahi",
+            "roz ho *rahi* galti."
+          ]
+        },
+        {
+          "scene_id": 5,
+          "spoken_hindi": "हर दिन हजारों विजिटर्स का डेटा बिना सुरक्षा लीक हो रहा है।",
+          "pill_badge": "",
+          "headline_white": "Data Leak",
+          "headline_accent": "Every Day",
+          "widget_type": "MULTI_SITE_WARNING",
+          "widget_data": {
+            "card_title": "Visitor Data Risk",
+            "badge_text": "LEAK",
+            "big_number": "5",
+            "items": [
+              "Unsafe forms",
+              "Open APIs",
+              "Data theft"
+            ]
+          },
+          "captions": [
+            "Har *din* hazaro",
+            "visitors ka *data*",
+            "leak ho *raha* hai."
+          ]
+        },
+        {
+          "scene_id": 6,
+          "spoken_hindi": "नए डिजिटल कानून के तहत अब कोई छूट नहीं मिलेगी।",
+          "pill_badge": "",
+          "headline_white": "New Cyber",
+          "headline_accent": "Laws Active",
+          "widget_type": "TIMELINE_DEADLINE",
+          "widget_data": {
+            "card_title": "Strict Deadline",
+            "badge_text": "DEADLINE",
+            "big_number": "6",
+            "items": [
+              "New rules",
+              "Zero tolerance",
+              "Act now"
+            ]
+          },
+          "captions": [
+            "Naye *digital* kanoon",
+            "ke *tehat*",
+            "koi *chhoot* nahi."
+          ]
+        },
+        {
+          "scene_id": 7,
+          "spoken_hindi": "तो अपने बिज़नेस को बचाने के लिए, ये चीज़ें अभी अपनी वेबसाइट पर चेक करो:",
+          "pill_badge": "",
+          "headline_white": "Website Check",
+          "headline_accent": "Karlo Abhi",
+          "widget_type": "NUMBERED_GRID_INTRO",
+          "widget_data": {
+            "card_title": "Website Audit",
+            "badge_text": "CHECKLIST",
+            "big_number": "7",
+            "items": [
+              "6 vital checks",
+              "Secure site",
+              "Avoid penalty"
+            ]
+          },
+          "captions": [
+            "Toh *apne* business",
+            "ko *bachane* ke liye",
+            "*website* check karo."
+          ]
+        },
+        {
+          "scene_id": 8,
+          "spoken_hindi": "पहला — SSL Certificate और HTTPS protocol पूरी तरह valid होना चाहिए।",
+          "pill_badge": "01 AUDIT",
+          "headline_white": "SSL & HTTPS",
+          "headline_accent": "Must Be Valid",
+          "widget_type": "CHECKLIST_CARD",
+          "widget_data": {
+            "card_title": "SSL Security",
+            "badge_text": "COMPLIANT",
+            "big_number": "01",
+            "items": [
+              "Valid SSL",
+              "HTTPS secure",
+              "Green padlock"
+            ]
+          },
+          "captions": [
+            "Pehla — *SSL*",
+            "certificate aur *HTTPS*",
+            "valid *hona* chahiye."
+          ]
+        },
+        {
+          "scene_id": 9,
+          "spoken_hindi": "दूसरा — Privacy Policy और Terms page footer में साफ़ दिखने चाहिए।",
+          "pill_badge": "02 CONSENT",
+          "headline_white": "Privacy Policy",
+          "headline_accent": "Footer Link",
+          "widget_type": "TOGGLE_COMPARISON",
+          "widget_data": {
+            "card_title": "Legal Pages",
+            "badge_text": "REQUIRED",
+            "big_number": "02",
+            "items": [
+              "Privacy link",
+              "Terms page",
+              "Footer visible"
+            ]
+          },
+          "captions": [
+            "Doosra — *Privacy*",
+            "policy aur *Terms*",
+            "saaf *dikhne* chahiye."
+          ]
+        },
+        {
+          "scene_id": 10,
+          "spoken_hindi": "तीसरा — Cookie Consent Banner हर नए यूजर को दिखना कंपलसरी है।",
+          "pill_badge": "03 COOKIES",
+          "headline_white": "Cookie Banner",
+          "headline_accent": "Compulsory",
+          "widget_type": "BROWSER_SECURITY_LOCK",
+          "widget_data": {
+            "card_title": "Cookie Law",
+            "badge_text": "MANDATORY",
+            "big_number": "03",
+            "items": [
+              "Cookie banner",
+              "User consent",
+              "GDPR ready"
+            ]
+          },
+          "captions": [
+            "Teesra — *Cookie*",
+            "consent banner *compulsory*",
+            "hona *chahiye*."
+          ]
+        },
+        {
+          "scene_id": 11,
+          "spoken_hindi": "चौथा — Contact forms में Spam Protection या Captcha लगा होना चाहिए।",
+          "pill_badge": "04 FORMS",
+          "headline_white": "Form Security",
+          "headline_accent": "Add Captcha",
+          "widget_type": "FLOWCHART_ALERT",
+          "widget_data": {
+            "card_title": "Spam Shield",
+            "badge_text": "SECURE",
+            "big_number": "04",
+            "items": [
+              "Contact form",
+              "Anti-spam",
+              "Captcha check"
+            ]
+          },
+          "captions": [
+            "Chautha — *Contact*",
+            "forms me *spam*",
+            "protection *laga* ho."
+          ]
+        },
+        {
+          "scene_id": 12,
+          "spoken_hindi": "पाँचवाँ — Payment Gateway RBI approved और 256-bit encrypted होना चाहिए।",
+          "pill_badge": "05 PAYMENTS",
+          "headline_white": "RBI Approved",
+          "headline_accent": "256-bit Encrypted",
+          "widget_type": "CHECKLIST_CARD",
+          "widget_data": {
+            "card_title": "Secure Payments",
+            "badge_text": "RBI",
+            "big_number": "05",
+            "items": [
+              "RBI gateway",
+              "Encrypted txns",
+              "Safe checkout"
+            ]
+          },
+          "captions": [
+            "Paanchwa — *Payment*",
+            "gateway RBI *approved*",
+            "encrypted *hona* chahiye."
+          ]
+        },
+        {
+          "scene_id": 13,
+          "spoken_hindi": "छठा — Website backup हर हफ्ते automatically cloud पर सेव होना चाहिए।",
+          "pill_badge": "06 BACKUP",
+          "headline_white": "Auto Cloud",
+          "headline_accent": "Weekly Backup",
+          "widget_type": "TOGGLE_COMPARISON",
+          "widget_data": {
+            "card_title": "Data Backup",
+            "badge_text": "AUTO",
+            "big_number": "06",
+            "items": [
+              "Weekly backup",
+              "Cloud storage",
+              "Zero data loss"
+            ]
+          },
+          "captions": [
+            "Chhatha — *Website*",
+            "backup har *hafte*",
+            "cloud *par* save."
+          ]
+        },
+        {
+          "scene_id": 14,
+          "spoken_hindi": "फ्री वेबसाइट ऑडिट के लिए अभी DM में 'RULES' टाइप करें — Monk (aapki-website.in)",
+          "pill_badge": "CTA",
+          "headline_white": "DM 'RULES'",
+          "headline_accent": "Free Website Audit",
+          "widget_type": "CTA_SHARE_DM_BRAND",
+          "widget_data": {
+            "card_title": "Get Free Audit",
+            "badge_text": "MONK",
+            "big_number": "DM",
+            "items": [
+              "Comment RULES",
+              "Free audit",
+              "aapki-website.in"
+            ]
+          },
+          "captions": [
+            "Free audit *ke*",
+            "liye DM me *RULES*",
+            "type karein *Monk*."
+          ]
+        }
+      ],
+      "status": "draft"
+    },
+    {
       "id": "p_1794629840916_lb5b",
       "category_name": "SEO & Google Search Traffic",
       "subcategory_name": "SEO & Google Search Traffic",
